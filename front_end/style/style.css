@@ -6,20 +6,20 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 100px;
+    margin-top: 12.5vh;
 }
 
-.top-home{
+.top-home {
     width: 100%;
     display: flex;
     align-items: flex-end;
     justify-content: flex-end;
 }
 
-.top-home a{
+.top-home a {
     color: #FFFFFF;
-    padding-top: 5px;
-    padding-right: 30px;
+    padding-top: 1vh;
+    padding-right: 3vw;
     transition: all 0.5s ease;
 }
 
@@ -30,7 +30,7 @@ body {
 
 .homepage {
     display: flex;
-    flex-direction: column; 
+    flex-direction: column;
     align-items: flex-start;
 }
 
@@ -85,16 +85,17 @@ body {
 .button-register a {
     color: #FFFFFF;
     background-color: #3D3195;
-    padding: 10px 25px;
+    padding: 3vh 4vw;
     border-radius: 30px;
     text-decoration: none;
     display: inline-flex;
     align-items: center;
-    gap: 0.5rem; 
+    gap: 0.5rem;
     transition: all 0.3s ease;
 }
 
-.button-register a:hover {
+.button-register a:hover,
+.submit-register:hover {
     background-color: #3259B3;
     transition: all 0.3s ease;
 }
@@ -105,55 +106,74 @@ body {
 }
 
 .box-purple {
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
     background-color: #5C3DD9;
-    width: 80vh;
+    width: 40vw;
     height: 70vh;
     color: #FFFFFF;
     border-top-left-radius: 25px;
     border-bottom-left-radius: 25px;
+    box-sizing: border-box;
     z-index: 1;
 }
 
 .box-white {
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     background-color: #F2F2F2;
-    width: 80vh;
+    width: 40vw;
     height: 70vh;
     color: #000000;
     border-top-right-radius: 25px;
     border-bottom-right-radius: 25px;
+    box-sizing: border-box;
+    z-index: 1;
 }
 
 .welcome-white {
     color: #FFFFFF;
-    font-weight: 900;
-    font-size: 58px;
-    margin-top: -250px;
-    margin-left: 40px;
+    margin: 0;
+    top: 9.5vw;
+    left: 5vw;
     z-index: 3;
+    font-size: 3em;
+    font-weight: 900;
+    position: absolute;
 }
 
 .welcome-purple {
     color: #4A006F;
+    margin-left: 5vw;
+    font-size: 4em;
     font-weight: 900;
-    font-size: 72px;
-    margin-top: -60px;
-    margin-left: 40px;
+    position: absolute;
+}
+
+.header-container {
+    display: flex;
+    flex-direction: column;
+    margin-top: -12.5vw;
     z-index: 4;
 }
 
 .info-register {
-    font-weight: 200;
-    font-size: 24px;
-    margin-top: -40px;
-    margin-left: 50px;
+    margin: 9vw 0 0 3vh;
+    font-size: 1.5em;
+    font-weight: 500;
 }
 
-/* Classe da elipse do background que tem na maioria das telas */
 .background-image {
     position: absolute;
-    bottom: 0px;
-    left: 100px;
-    width: 400px;
+    bottom: 0;
+    left: 6vw;
+    width: 28vw;
     opacity: 0.6;
     z-index: 0;
 }
@@ -168,18 +188,18 @@ body {
     z-index: 0;
 }
 
-/* Classe das linhas na tela de cadastro/login */
 .three_lines {
-    margin-left: -40px;
-    margin-top: -45px;
     opacity: 0.5;
+    width: 25vw;
+    margin: 0;
     z-index: 2;
+    transform: rotate(-5deg);
 }
 
-/* Classe do icone do robo na tela de cadastro/login */
 .icon_robot {
-    width: 250px;
-    margin-left: 30px;
+    width: 10vw;
+    margin-top: auto;
+    margin-left: 2vw;
     transform: rotate(-10deg);
 }
 
@@ -188,7 +208,6 @@ body {
     flex-direction: column;
     align-items: center;
     gap: 10px;
-    margin-top: 140px;
 }
 
 .form-container-login {
@@ -196,7 +215,6 @@ body {
     flex-direction: column;
     align-items: center;
     gap: 10px;
-    margin-top: 200px;
 }
 
 .label-input {
@@ -206,38 +224,45 @@ body {
 
 .icon_label {
     position: absolute;
-    left: 10px;
+    left: 1vw;
     top: 50%;
     transform: translateY(-50%);
-    width: 18px;
-    height: 18px;
+    width: 1vw;
+    height: 3vh;
     pointer-events: none;
 }
 
 .icon_pass {
     position: absolute;
-    right: 15px;
+    right: 1vw;
     top: 50%;
     transform: translateY(-50%);
-    width: 18px;
-    height: 18px;
+    width: 1vw;
+    height: 3vh;
 }
 
-.name-register {
-  padding-left: 35px;
+.input-register {
+  padding-left: 2.5vw;
   align-items: center;
-  width: 40vh;
-  height: 35px;
+  width: 80%;
+  max-width: 40vw;
+  min-width: 20vw;
+  height: 4vh;
   border-radius: 25px;
   border: 2px solid #A5A5A5;
+  box-sizing: border-box;
 }
 
 .submit-register {
     background-color: #3D3195;
     color: #FFFFFF;
-    width: 50vh;
-    height: 50px;
-    margin-top: 30px;
+    width: 25vw;
+    max-width: 50vh;
+    min-width: 20vw;
+    height: 5vh;
+    margin-top: 3vh;
     border-radius: 25px;
     font-size: 24px;
+    cursor: pointer;
+    border: none;
 }
