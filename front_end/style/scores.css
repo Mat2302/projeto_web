@@ -1,0 +1,161 @@
+/* Scores */
+
+/* Estrutura principal da página de Scores */
+body {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  background-color: #301446;
+  color: #FFFFFF;
+}
+
+/* Cabeçalho da tela de Scores */
+header {
+  padding: 3vh 2vw;
+  text-align: center;
+  font-size: 4vh; 
+  font-weight: 900;
+  background-color: #421E86; 
+}
+
+.header-content {
+  margin-left: calc(12vw + 3vw); /* largura do nav + gap da main */
+}
+
+/* Área principal: menu lateral + conteúdo */
+.main {
+  display: flex;
+  flex: 1;
+  gap: 3vw;
+  padding: 3vh 2vw;
+}
+
+.stats-nav .nav-label {
+  font-family: Verdana, Geneva, Tahoma, sans-serif; 
+  font-size: 2vh;
+  font-weight: 900; 
+  color: #FFFFFF; 
+  margin-bottom: 2vh; 
+  text-align: center; 
+}
+
+/* Menu lateral */
+.stats-nav {
+  display: flex;
+  flex-direction: column; 
+  gap: 2vh;
+  background-color: #5C3DD9;
+  padding: 2vh 1vw;
+  border-radius: 2vh;
+  min-width: 12vw;
+  align-self: center;
+}
+
+.stats-item {
+  padding: 1.5vh 1vw;
+  border-radius: 1vh;
+  text-decoration: none;
+  color: #FFFFFF;
+  font-weight: bold;
+  text-align: center;
+  background-color: #3D3195;
+  transition: background 0.2s, transform 0.2s;
+  font-size: 2vh;
+}
+
+.stats-item:hover {
+  background-color: #3259B3;
+  transform: translateX(0.5vw);
+}
+
+/* Conteúdo principal */
+.homepage {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 3vh;
+  font-size: 2vh;
+  align-items: center; /* centraliza conteúdo horizontal */
+  text-align: center;
+}
+
+/* Botões de troca de modo */
+.mode-switch {
+  display: flex;
+  gap: 2vw;
+  justify-content: center; 
+}
+
+.mode-btn {
+  cursor: pointer;
+  padding: 1vh 2vw;
+  border-radius: 1vh;
+  background-color: #3D3195;
+  border: none;
+  color: #FFFFFF;
+  font-size: 2vh;
+  font-weight: bold;
+  transition: background 0.2s;
+}
+
+.mode-btn:hover {
+  background-color: #3259B3;
+}
+
+.mode-btn.active {
+  background-color: #FFFFFF;
+  color: #301446;
+}
+
+/* Cartão de estatísticas */
+.stats-card {
+  display: flex;
+  align-items: center;
+  gap: 1vw;
+  background-color: #5C3DD9;
+  padding: 2vh 2vw;
+  border-radius: 2vh;
+  width: fit-content;
+  box-shadow: 0 0.5vh 1vh rgba(0,0,0,0.3);
+}
+
+.stats-card .icon {
+  font-size: 3vh;
+}
+
+.stats-card .value {
+  font-size: 2.2vh;
+  font-weight: bold;
+}
+
+/* Tabela de histórico */
+table {
+  width: 80%; 
+  border-collapse: collapse;
+  background-color: #5C3DD9;
+  border-radius: 2vh;
+  overflow: hidden;
+  margin: 0 auto; 
+}
+
+th, td {
+  padding: 1vh 1vw;
+  border-bottom: 1px solid #3D3195;
+  text-align: center;
+  font-size: 2vh;
+  color: #FFFFFF;
+}
+
+th {
+  background-color: #3D3195;
+}
+
+tr:hover {
+  background-color: #3259B3;
+}
+
+/* Títulos secundários */
+h2 {
+  margin-top: 3vh;
+}
