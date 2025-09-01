@@ -1,0 +1,159 @@
+/* Intro -> Cadastro e Login */
+.container-register {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 12.5vh;
+}
+
+.container-purple {
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    background-color: #5C3DD9;
+    width: 40%;
+    min-width: 40vw;
+    height: 70vh;
+    color: #FFFFFF;
+    border-top-left-radius: 25px;
+    border-bottom-left-radius: 25px;
+    box-sizing: border-box;
+    z-index: 1;
+}
+
+.container-white {
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #F2F2F2;
+    width: 40%;
+    height: 70vh;
+    color: #000000;
+    border-top-right-radius: 25px;
+    border-bottom-right-radius: 25px;
+    box-sizing: border-box;
+    z-index: 1;
+}
+
+.header-content {
+    display: flex;
+    flex-direction: column;
+    margin-top: -14vw;
+    margin-left: 7vh;
+    z-index: 4;
+}
+
+.welcomew-content {
+    color: #FFFFFF;
+    margin: 4vh 0 0 0;
+    padding: 0;
+    z-index: 3;
+    font-size: 3em;
+    font-weight: 900;
+}
+
+.welcomep-content {
+    color: #4A006F;
+    font-size: 4em;
+    font-weight: 900;
+    margin: 2vh 0 0 0;
+    padding: 0;
+}
+
+.info-content {
+    font-size: 1.5em;
+    font-weight: 500;
+    margin: 2vh 0 0 0;
+    padding: 0;
+}
+
+/* Formulario -> Cadastro e Login */
+.form-login,
+.form-register {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.label-input {
+    position: relative;
+    display: inline-block;
+}
+
+.input-login,
+.input-register {
+  padding-left: 2.5vw;
+  align-items: center;
+  width: 80%;
+  max-width: 40vw;
+  min-width: 20vw;
+  height: 5vh;
+  border-radius: 25px;
+  border: 2px solid #A5A5A5;
+  box-sizing: border-box;
+}
+
+.submit-login,
+.submit-register {
+    background-color: #3D3195;
+    color: #FFFFFF;
+    width: 25vw;
+    max-width: 50vh;
+    min-width: 20vw;
+    height: 5vh;
+    margin-top: 3vh;
+    border-radius: 25px;
+    font-size: 24px;
+    cursor: pointer;
+    border: none;
+}
+
+/* Imagens -> Cadastro e Login */
+.background-image {
+    position: absolute;
+    bottom: 0;
+    left: 6vw;
+    width: 28vw;
+    opacity: 0.6;
+    z-index: 0;
+}
+
+.img-three-lines {
+    opacity: 0.5;
+    width: 25vw;
+    margin: 0;
+    z-index: 2;
+    transform: rotate(-5deg);
+}
+
+.img-icon-robot {
+    width: 10vw;
+    margin-top: auto;
+    margin-left: 2vw;
+    transform: rotate(-10deg);
+}
+
+.img-icon-label {
+    position: absolute;
+    left: 1vw;
+    top: 50%;
+    width: 1vw;
+    height: 3vh;
+    pointer-events: none;
+    transform: translateY(-50%);
+}
+
+.img-icon-pass {
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    width: 18px;
+    height: 24px;
+    cursor: pointergi;
+    transform: translateY(-50%);
+}
