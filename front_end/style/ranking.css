@@ -2,6 +2,7 @@
 .main {
   display: flex;
   flex: 1;
+  justify-content: center;
   gap: 3vw;
   padding: 3vh 2vw;
   margin-top: 10vh;
@@ -47,13 +48,15 @@
 
 /* Conteúdo principal */
 .homepage {
-  flex: 1;
   display: flex;
   flex-direction: column;
   gap: 3vh;
   font-size: 2vh;
   align-items: center;
   text-align: center;
+  flex: none;         
+  max-width: 70vw;    
+  width: 100%;
 }
 
 /* Botões de troca de modo */
@@ -65,23 +68,21 @@
 
 .mode-btn {
   cursor: pointer;
-  padding: 1vh 2vw;
-  border-radius: 1vh;
-  background-color: #3D3195;
   border: none;
   color: #FFFFFF;
+  background-color: transparent;
   font-size: 2vh;
   font-weight: bold;
-  transition: background 0.2s;
+  transition: all 0.5s ease;
 }
 
 .mode-btn:hover {
-  background-color: #3259B3;
+  text-shadow: 2px 4px 8px rgba(56,163,165,1);
+  transition: all 0.5s ease;
 }
 
 .mode-btn.active {
-  background-color: #FFFFFF;
-  color: #301446;
+  color: #57CC99;
 }
 
 /* Card estatística total */
@@ -230,4 +231,11 @@ h2 {
 .title-class-general {
   display: flex;
   flex-direction: row;
+}
+
+.line-under {
+  width: 50%;
+  height: 0.3vh;
+  background-color: #FFFFFF;
+  margin: 0;
 }
