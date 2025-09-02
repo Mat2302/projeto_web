@@ -1,35 +1,10 @@
-/* Ranking Global */
-
-/* Estrutura principal da página de Ranking */
-body {
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-  background-color: #301446;
-  color: #FFFFFF;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
-}
-
-/* Cabeçalho */
-header {
-  padding: 3vh 2vw;
-  text-align: center;
-  font-size: 4vh; 
-  font-weight: 900;
-  background-color: #421E86; 
-}
-
-.header-content {
-  margin-left: calc(12vw + 3vw); /* largura do nav + gap da main */
-}
-
 /* Área principal */
 .main {
   display: flex;
   flex: 1;
   gap: 3vw;
   padding: 3vh 2vw;
+  margin-top: 10vh;
 }
 
 .stats-nav .nav-label {
@@ -177,19 +152,15 @@ header {
 
 /* Cores específicas por posição */
 .podium-card.first {
-  background-color: #FFD700;
+  background-color: #57CC99;
   color: #301446;
   transform: scale(1.2);
 }
 
-.podium-card.second {
-  background-color: #C0C0C0;
+.podium-card.second,
+.podium-card.third{
+  background-color: #57CC99;
   color: #301446;
-}
-
-.podium-card.third {
-  background-color: #CD7F32;
-  color: #FFFFFF;
 }
 
 /* Textos do pódio */
@@ -231,4 +202,32 @@ tr:hover {
 
 h2 {
   margin-top: 3vh;
+  color: #FFF;
+}
+
+
+.title-ranking h1{
+  color: #FFF;
+  font-size: 2rem;
+}
+
+.title-ranking img {
+  width: 4vw;
+  margin-left: 2vh;
+  transform: rotate(15deg);
+}
+
+.title-ranking {
+  display: flex;
+  flex-direction: row;
+}
+
+.title-class-general img {
+  width: 4vw;
+  margin-right: 2vh;
+  transform: rotate(-15deg);
+}
+.title-class-general {
+  display: flex;
+  flex-direction: row;
 }

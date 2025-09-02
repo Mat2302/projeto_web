@@ -1,6 +1,13 @@
+* { 
+    box-sizing: border-box; 
+}
+
+
 body {
     background-color: #301446;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
+    margin: 0;
+    height: 100%;
 }
 
 header {
@@ -20,7 +27,7 @@ header {
 
 .title-header {
     margin: 0;
-    font-size: 1.5rem;
+    font-size: 2.7rem;
     font-weight: 900;
     color: #fff;
 }
@@ -36,12 +43,13 @@ header {
     color: #fff;
     text-decoration: none;
     font-weight: 500;
-    transition: 0.3s;
+    transition: all 0.5s ease;
 }
 
 .nav-header a:hover,
 .exit-header a:hover{
     text-shadow: 2px 4px 8px rgba(56,163,165,1);
+    transition: all 0.5s ease;
 }
 
 .exit-header img {
