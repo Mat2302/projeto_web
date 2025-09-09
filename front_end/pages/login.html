@@ -1,45 +1,46 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Memory Overflow - Login</title>
     <link rel="stylesheet" href="../style/style.css">
     <link rel="stylesheet" href="../style/register.css">
 </head>
 <body>
-    <section>
-        <div class="container-register">
-            <div class="container-purple">
-                <img src="../../img/three_lines.svg" alt="three_lines" class="img-three-lines">
-                <div class="header-content">
-                    <p class="welcomew-content">Bem-vindo de volta ao</p>
-                    <p class="welcomep-content">Memory Overflow</p>
-                    <p class="info-content">Faça seu login e comece a jogar!</p>
+    <section class="wrap-login">
+        <img src="../../img/wave_register.svg" class = "background-register-image" alt="">
+        <div class="box-login">
+            <div class="box-welcome">
+                <img src="../../img/three_lines.svg" alt="" class="waves">
+                <div class="text-welcome">
+                    <p class="welcome-first">Bem vindo (a) de volta ao</p>
+                    <h1>Memory Overflow</h1>
+                    <p class="welcome-second">Faça seu login e comece a jogar!</p>
                 </div>
-                <img src="../../img/icon_robot.svg" alt="icon_robot" class="img-icon-robot">
+                
+                <img src="../../img/icon_robot.svg  " alt="" class="robot-register">
             </div>
-            <div class="container-white">
-                <div class="form-login">
-                    <label class="label-input">
-                        <img src="../../img/icon_email.svg" class="img-icon-label">
-                        <input type="email" class="input-login" placeholder="E-mail">
-                    </label>
 
-                    <label class="label-input">
-                        <img src="../../img/icon_lock.svg" class="img-icon-label">
-                        <input type="password" class="input-login" placeholder="Senha">
-                        <img src="../../img/icon_eye.svg" class="img-icon-pass">
-                    </label>
+            <div class="box-input">
+                 <label class="label-input">
+                    <img src="../../img/icon_email.svg" class="img-icon-label">
+                    <input type="email" class="input-login" placeholder="E-mail">
+                </label>
 
-                    <input type="submit" value="Entrar" class="submit-login"">
+                <label class="label-input">
+                    <img src="../../img/icon_lock.svg" class="img-icon-label">
+                    <input type="password" class="input-login" placeholder="Senha">
+                    <img src="../../img/icon_eye.svg" class="img-icon-pass">
+                </label>
+
+                <input type="submit" value="Entrar" class="submit-login">
+
+                <div class="register-log">
+                    <label>Não tem conta?</label>
+                    <a href="../pages/register.html">Cadastre-se</a>
                 </div>
             </div>
-        </div>
-
-        <div class="background-image">
-            <img src="../../img/wave_register.svg" alt="wave_register">
         </div>
     </section>
-</body>
+</body> 
 </html>

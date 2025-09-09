@@ -1,27 +1,28 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Memory Overflow - Cadastro</title>
+    <title>Memory Overflow - Login</title>
     <link rel="stylesheet" href="../style/style.css">
     <link rel="stylesheet" href="../style/register.css">
 </head>
 <body>
-    <section>
-        <div class="container-register">
-            <div class="container-purple">
-                <img src="../../img/three_lines.svg" alt="three_lines" class="img-three-lines">
-                <div class="header-content">
-                    <h1 class="welcomew-content">Bem-vindo ao</h1>
-                    <h1 class="welcomep-content">Memory Overflow</h1>
-                    <p class="info-content">Faça seu cadastro e comece a jogar!</p>
+    <section class="wrap-login">
+        <img src="../../img/wave_register.svg" class = "background-register-image" alt="">
+        <div class="box-login">
+            <div class="box-welcome">
+                <img src="../../img/three_lines.svg" alt="" class="waves">
+                <div class="text-welcome">
+                    <p class="welcome-first">Bem vindo (a) de volta ao</p>
+                    <h1>Memory Overflow</h1>
+                    <p class="welcome-second">Faça seu login e comece a jogar!</p>
                 </div>
-                <img src="../../img/icon_robot.svg" alt="icon_robot" class="img-icon-robot">
+                
+                <img src="../../img/icon_robot.svg  " alt="" class="robot-register">
             </div>
-            <div class="container-white">
-                <div class="form-register">
-                    <label class="label-input">
+
+            <div class="box-input register">
+                 <label class="label-input">
                         <img src="../../img/icon_user.svg" class="img-icon-label">
                         <input type="text" id="nome" class="input-register" placeholder="Nome Completo">
                     </label>
@@ -56,14 +57,20 @@
                         <input type="password" id="senha" class="input-register" placeholder="Senha">
                         <img src="../../img/icon_eye.svg" class="img-icon-pass">
                     </label>
+
+                    <label class="custom-file-upload">
+                        Faça upload de uma foto📷
+                        <input type="file" class="input-register upload">
+                    </label>
+
                     <input type="submit" value="Cadastrar" class="submit-register">
+
+                <div class="register-log">
+                    <label>Já cadastrado?</label>
+                    <a href="../pages/login.html">Entre</a>
                 </div>
             </div>
         </div>
-
-        <div class="background-image">
-            <img src="../../img/wave_register.svg" alt="wave_register">
-        </div>
     </section>
-</body>
+</body> 
 </html>

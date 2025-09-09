@@ -1,83 +1,104 @@
-/* Intro -> Cadastro e Login */
-.container-register {
+.background-register-image {
+    position: absolute;
+    bottom: 0;
+    left: 0 ;
+    width: 50vw;
+    height: auto;
+    opacity: 0.6;
+    z-index: -1;
+}
+
+.wrap-login {
+    margin-top: 15vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 12.5vh;
 }
 
-.container-purple {
-    display: flex;
-    position: relative;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-start;
-    background-color: #5C3DD9;
-    width: 40%;
-    min-width: 40vw;
+.box-login {
+    width: 70vw;
     height: 70vh;
-    color: #FFFFFF;
-    border-top-left-radius: 25px;
-    border-bottom-left-radius: 25px;
-    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+}
+
+.box-welcome {
+    width: 50%;
+    background-color: var(--register-color);
+    padding: 1vw;
+    border-radius: 10% 0 0 10%;
+    position: relative;
+    overflow: hidden;
+}
+
+.waves{
+    position: absolute;
+    top: -10%;
+    left: -8%;
+    width: 80%;
+    height: auto;
+    opacity: 0.6;
+    z-index: 0;
+}
+
+.text-welcome {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    margin-top: 20vh;
+}
+
+.text-welcome p,
+.text-welcome h1 {
+    margin: 0;
+    line-height: 1.2rem;
+}
+
+.box-welcome h1,
+.welcome-first,
+.welcome-second,
+.robot-register {
+    position: relative;
     z-index: 1;
 }
 
-.container-white {
+.box-welcome h1 {
+    color: var(--title-color);
+    font-size: 3vw;
+    font-weight: 900;
+}
+
+.welcome-first,
+.welcome-second {
+    color: var(--text-color);
+}
+
+.welcome-first {
+    font-size: 2vw;
+    font-weight: 900;
+}
+
+.welcome-second {
+    font-size: 1vw;
+}
+
+.robot-register {
+    width: 15vw;
+}
+
+.box-input {
     display: flex;
-    position: relative;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: #F2F2F2;
-    width: 40%;
-    height: 70vh;
-    color: #000000;
-    border-top-right-radius: 25px;
-    border-bottom-right-radius: 25px;
-    box-sizing: border-box;
-    z-index: 1;
+    width: 50%;
+    gap: 2rem;
+    background-color: var(--text-color);
+    border-radius: 0 10% 10% 0;
 }
 
-.header-content {
-    display: flex;
-    flex-direction: column;
-    margin-top: -14vw;
-    margin-left: 7vh;
-    z-index: 4;
-}
-
-.welcomew-content {
-    color: #FFFFFF;
-    margin: 4vh 0 0 0;
-    padding: 0;
-    z-index: 3;
-    font-size: 3em;
-    font-weight: 900;
-}
-
-.welcomep-content {
-    color: #4A006F;
-    font-size: 4em;
-    font-weight: 900;
-    margin: 2vh 0 0 0;
-    padding: 0;
-}
-
-.info-content {
-    font-size: 1.5em;
-    font-weight: 500;
-    margin: 2vh 0 0 0;
-    padding: 0;
-}
-
-/* Formulario -> Cadastro e Login */
-.form-login,
-.form-register {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 10px;
+.register {
+  gap: 0.5rem;
 }
 
 .label-input {
@@ -94,14 +115,34 @@
   min-width: 20vw;
   height: 5vh;
   border-radius: 25px;
-  border: 2px solid #A5A5A5;
+  border: 2px solid var(--light-gray);
   box-sizing: border-box;
+}
+
+.register-log {
+    display: flex;
+    flex-direction: row;
+    gap: 0.5rem;
+}
+
+.register-log label {
+    color: var(--light-gray);
+}
+
+.register-log a {
+    color: var(--back-color);
+    transition: all 0.5s ease;
+}
+
+.register-log a:hover {
+    color: var(--detail-color);
+    transition: all 0.5s ease;
 }
 
 .submit-login,
 .submit-register {
-    background-color: #3D3195;
-    color: #FFFFFF;
+    background-color: var(--button-color);
+    color: var(--text-color);
     width: 25vw;
     max-width: 50vh;
     min-width: 20vw;
@@ -111,31 +152,13 @@
     font-size: 24px;
     cursor: pointer;
     border: none;
+    transition: all 0.5s ease;
 }
 
-/* Imagens -> Cadastro e Login */
-.background-image {
-    position: absolute;
-    bottom: 0;
-    left: 6vw;
-    width: 28vw;
-    opacity: 0.6;
-    z-index: 0;
-}
-
-.img-three-lines {
-    opacity: 0.5;
-    width: 25vw;
-    margin: 0;
-    z-index: 2;
-    transform: rotate(-5deg);
-}
-
-.img-icon-robot {
-    width: 10vw;
-    margin-top: auto;
-    margin-left: 2vw;
-    transform: rotate(-10deg);
+.submit-login:hover,
+.submit-register:hover {
+    background-color: var(--hover-color);
+    transition: all 0.5s ease;
 }
 
 .img-icon-label {
@@ -156,4 +179,30 @@
     height: 24px;
     cursor: pointergi;
     transform: translateY(-50%);
+}
+
+
+.upload {
+    display: none;
+}
+
+.custom-file-upload {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.8rem;
+    background-color: transparent;
+    border: 2px solid var(--light-gray);;
+    color: var(--back-color);
+    font-size: 0.7rem;
+    padding: 0.8rem 1.5rem;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.custom-file-upload:hover {
+    background-color: var(--back-color);
+    color: var(--text-color);
+    transition: all 0.3s ease;
 }

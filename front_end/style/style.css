@@ -1,3 +1,14 @@
+:root {
+    --back-color: #301446;
+    --text-color: #FFFFFF;
+    --button-color: #3D3195;
+    --hover-color: #3259B3;
+    --detail-color: #38A3A5;
+    --register-color: #5C3DD9;
+    --title-color: #4A006F;
+    --light-gray: #A5A5A5;
+}
+
 * { 
     box-sizing: border-box; 
 }
