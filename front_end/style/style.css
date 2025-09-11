@@ -174,4 +174,16 @@ header {
     z-index: 0;
 }
 
+.background-wave-image {
+    position: absolute;
+    bottom: 0;
+    left: 0 ;
+    width: 50vw;
+    height: auto;
+    opacity: 0.6;
+    z-index: -1;
+}
+
+
+
 
