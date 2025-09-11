@@ -1,0 +1,122 @@
+
+.selection-wrapper {
+  position: relative;
+  width: 100%;
+  height: 88vh;
+  overflow: hidden;
+}
+
+.selection-wrapper section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  padding: 0 5vw;
+  height: 100%;
+  position: relative;
+  z-index: 1;
+}
+
+.left-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 3rem;
+  position: relative;
+  z-index: 1;
+}
+
+.game-modes {
+  display: grid;
+  grid-template-columns: repeat(2, 120px);
+  gap: 2rem 6rem;
+  justify-content: center;
+  position: relative;
+  z-index: 1;
+}
+
+.game-modes > .mode:nth-child(3),
+.game-modes > .mode:nth-child(4) {
+  transform: translateX(40px);
+}
+
+.mode {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: #fff;
+  transition: all 0.3s ease;
+}
+
+
+.mode-2x2 { background-image: url("../../img/2x2.svg"); }
+.mode-4x4 { background-image: url("../../img/4x4.svg"); }
+.mode-6x6 { background-image: url("../../img/6x6.svg"); }
+.mode-8x8 { background-image: url("../../img/8x8.svg"); }
+
+.mode:hover {
+  filter: brightness(1.2);
+  cursor: pointer;
+}
+
+.right-content {
+  display: flex;
+  justify-content: flex-start;;
+  align-items: center;
+  padding-left: 0;
+  position: right;
+  z-index: 1;
+}
+
+.right-content img {
+  max-width: 80%;
+  height: auto;
+  display: block;
+}
+
+
+.background-selection-image {
+  position: absolute;
+  top: 0; 
+  left: 0;
+  width: 100%;
+  height: auto;
+  z-index: 0;
+  opacity: 1;
+}
+
+.background-selection-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.welcome {
+    color: #FFFFFF;
+    padding-top: 10vh;
+    padding-right: 32vh;
+    padding-bottom: 0;
+    padding-left: 0;
+    transition: all 0.5s ease;}
+
+.mode-selection{
+
+    margin: 0;
+    font-size: 1.8rem;
+    font-weight: 900;
+    background-color: transparent;
+    border: none;
+    color: #FFF;
+    padding-top: 0;
+    padding-right: 0vh;
+    padding-bottom: 0;
+    padding-left: 0;
+
+}
