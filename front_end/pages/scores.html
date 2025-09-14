@@ -7,18 +7,19 @@
   <!-- Folha padrão -->
   <link rel="stylesheet" href="../style/style.css">
   <!-- Folha complementar (Scores) -->
-  <link rel="stylesheet" href="../style/scores.css">
+  <link rel="stylesheet" href="../style/ranking.css">
 </head>
 <body>
-   <header>
+  <header>
         <h1 class="title-header">Memory Overflow</h1>
         <nav class="nav-header">
+            <a href="selection.html">Jogar</a>
             <a href="ranking.html">Ranking</a>
             <a href="scores.html">Scores</a>
             <a href="profile.html">Perfil</a>
         </nav>
         <div class="exit-header">
-            <a href="">Sair <img src="../../img/exit.svg" alt="Sair"></a>
+            <a href="homepage.html">Sair <img src="../../img/exit.svg" alt="Sair"></a>
         </div>
     </header>
     
@@ -32,16 +33,6 @@
     </nav>
 
     <section class="homepage">
-      <div class="mode-switch">
-        <button class="mode-btn active">Clássico</button>
-        <button class="mode-btn">Com Tempo</button>
-      </div>
-
-      <div class="stats-card">
-        <div class="icon">🕹️</div>
-        <div class="value">Total de Partidas: 42</div>
-      </div>
-
       <h2>Histórico de Partidas</h2>
       <table>
         <thead>
@@ -73,7 +64,16 @@
           </tr>
         </tbody>
       </table>
+      
+      <div class="mode-switch">
+        <button class="mode-btn active">Clássico</button>
+        <button class="mode-btn">Com Tempo</button>
+      </div>
     </section>
+
+    <div class="background-selection-image">
+      <img src="../../img/wave-board.svg" alt="Wave background">
+    </div>
   </div>
 </body>
 </html>

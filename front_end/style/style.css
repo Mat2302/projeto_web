@@ -1,12 +1,12 @@
 :root {
-    --back-color: #301446;
+    --background-color: #301446;
     --text-color: #FFFFFF;
-    --button-color: #3D3195;
+    --primary-color: #3D3195;
     --hover-color: #3259B3;
-    --detail-color: #38A3A5;
-    --register-color: #5C3DD9;
+    --secondary-color: #38A3A5;
+    --accent-color: #5C3DD9;
     --title-color: #4A006F;
-    --light-gray: #A5A5A5;
+    --input-color: #A5A5A5;
 }
 
 * { 
@@ -15,7 +15,7 @@
 
 
 body {
-    background-color: #301446;
+    background-color: var(--background-color);
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     margin: 0;
     height: 100%;
@@ -75,7 +75,7 @@ header {
 }
 
 .top-home a {
-    color: #FFFFFF;
+    color: var(--text-color);
     padding-top: 1vh;
     padding-right: 3vw;
     transition: all 0.5s ease;
@@ -110,14 +110,14 @@ header {
 }
 
 .title-home {
-    color: #FFFFFF;
+    color: var(--text-color);
     z-index: 1;
     font-weight: 900;
     font-size: 4vw;
 }
 
 .text-home {
-    color: #FFFFFF;
+    color: var(--text-color);
     z-index: 1;
     font-size: 1.5vw;
 }
@@ -141,8 +141,8 @@ header {
 }
 
 .button-register a {
-    color: #FFFFFF;
-    background-color: #3D3195;
+    color: var(--text-color);
+    background-color: var(--primary-color);
     padding: 3vh 4vw;
     border-radius: 30px;
     text-decoration: none;
@@ -155,7 +155,7 @@ header {
 .button-register a:hover,
 .submit-register:hover,
 .submit-login:hover {
-    background-color: #3259B3;
+    background-color: var(--hover-color);
     transition: all 0.3s ease;
 }
 
@@ -182,6 +182,22 @@ header {
     height: auto;
     opacity: 0.6;
     z-index: -1;
+}
+
+.background-selection-image {
+  position: absolute;
+  top: 0; 
+  left: 0;
+  width: 100%;
+  height: auto;
+  z-index: -1;
+  opacity: 1;
+}
+
+.background-selection-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 

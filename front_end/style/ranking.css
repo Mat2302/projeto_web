@@ -12,7 +12,7 @@
   font-family: Verdana, Geneva, Tahoma, sans-serif; 
   font-size: 2vh;
   font-weight: 900; 
-  color: #FFFFFF; 
+  color: var(--text-color); 
   margin-bottom: 2vh; 
   text-align: center; 
 }
@@ -22,7 +22,7 @@
   display: flex;
   flex-direction: column; 
   gap: 2vh;
-  background-color: #5C3DD9;
+  background-color: var(--accent-color);
   padding: 2vh 1vw;
   border-radius: 2vh;
   min-width: 12vw;
@@ -33,16 +33,16 @@
   padding: 1.5vh 1vw;
   border-radius: 1vh;
   text-decoration: none;
-  color: #FFFFFF;
+  color: var(--text-color);
   font-weight: bold;
   text-align: center;
-  background-color: #3D3195;
+  background-color: var(--primary-color);
   transition: background 0.2s, transform 0.2s;
   font-size: 2vh;
 }
 
 .stats-item:hover {
-  background-color: #3259B3;
+  background-color: var(--hover-color);
   transform: translateX(0.5vw);
 }
 
@@ -64,12 +64,15 @@
   display: flex;
   gap: 2vw;
   justify-content: center; 
+  background-color: var(--text-color);
+  border-radius: 1vw;
+  padding: 1vw;
 }
 
 .mode-btn {
   cursor: pointer;
   border: none;
-  color: #FFFFFF;
+  color: var(--title-color);
   background-color: transparent;
   font-size: 2vh;
   font-weight: bold;
@@ -77,12 +80,15 @@
 }
 
 .mode-btn:hover {
-  text-shadow: 2px 4px 8px rgba(56,163,165,1);
+  color: var(--secondary-color);
   transition: all 0.5s ease;
 }
 
 .mode-btn.active {
-  color: #57CC99;
+  background-color: var(--secondary-color);
+  color: var(--text-color);
+  border-radius: 1vw;
+  padding: 0.5vw;
 }
 
 /* Card estatística total */
@@ -90,7 +96,7 @@
   display: flex;
   align-items: center;
   gap: 1vw;
-  background-color: #5C3DD9;
+  background-color: var(--accent-color);
   padding: 2vh 2vw;
   border-radius: 2vh;
   width: fit-content;
@@ -151,35 +157,38 @@
   padding: 1vh 1vw;
 }
 
+
+
 /* Cores específicas por posição */
 .podium-card.first {
   background-color: #57CC99;
-  color: #301446;
+  color: var(--background-color);
   transform: scale(1.2);
 }
 
 .podium-card.second,
 .podium-card.third{
   background-color: #57CC99;
-  color: #301446;
+  color: var(--background-color);
 }
 
 /* Textos do pódio */
 .podium-card h3 {
   margin: 0;
   font-size: 2vh;
+  color: var(--text-color);
 }
 
 .podium-card p {
   margin: 0;
-  font-size: 1.8vh;
+  font-size: 1.3vh;
 }
 
 /* Tabela */
 table {
   width: 90%; 
   border-collapse: collapse;
-  background-color: #5C3DD9;
+  background-color: var(--accent-color);
   border-radius: 2vh;
   overflow: hidden;
   margin: 2vh auto; 
@@ -187,18 +196,18 @@ table {
 
 th, td {
   padding: 1vh 1vw;
-  border-bottom: 1px solid #3D3195;
+  border-bottom: 1px solid var(--primary-color);
   text-align: center;
   font-size: 2vh;
-  color: #FFFFFF;
+  color: var(--text-color);
 }
 
 th {
-  background-color: #3D3195;
+  background-color: var(--primary-color);
 }
 
 tr:hover {
-  background-color: #3259B3;
+  background-color: var(--hover-color);
 }
 
 h2 {
@@ -231,11 +240,4 @@ h2 {
 .title-class-general {
   display: flex;
   flex-direction: row;
-}
-
-.line-under {
-  width: 50%;
-  height: 0.3vh;
-  background-color: #FFFFFF;
-  margin: 0;
 }

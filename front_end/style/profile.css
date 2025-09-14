@@ -25,7 +25,7 @@
     margin-top: 20rem;
     width: 40vmin;
     height: 40vmin;
-    border: 10px solid #38A3A5;
+    border: 10px solid var(--secondary-color);
     border-radius: 50%;
     overflow: hidden;
     flex-shrink: 0;
@@ -84,7 +84,7 @@
 
 .stat {
     margin-top: 2rem;
-    background-color: #38A3A5;
+    background-color: var(--secondary-color);
     width: 10vw;
     height: 20vh;
     z-index: 10;

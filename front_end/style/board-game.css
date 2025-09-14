@@ -26,13 +26,13 @@
     color: var(--text-color);
     text-decoration: none;
     transition: all 0.5s ease;
-    background-color: var(--register-color);
+    background-color: var(--accent-color);
     padding: 1rem;
     border-radius: 0.8rem;
 }
 
 .link-game:hover {
-    background-color: var(--detail-color);
+    background-color: var(--secondary-color);
     transition: all 0.5s ease;
 }
 
@@ -47,7 +47,7 @@
 .game-mode {
     grid-column: 2;
     justify-self: center;
-    background-color: var(--detail-color);
+    background-color: var(--secondary-color);
     color: var(--text-color);
     padding-left: 2.5rem;
     padding-right: 2.5rem;
@@ -76,14 +76,14 @@
     width: 9.625vw;
     height: 17.11vh;
     background-color: var(--text-color);
-    border: 9px var(--detail-color);
+    border: 9px var(--secondary-color);
     border-style: double;
     border-radius: 2rem;
     transition: all 0.5s ease;
 }
 
 .flip div {
-    background-color: var(--detail-color);
+    background-color: var(--secondary-color);
 }
 
 
@@ -106,14 +106,14 @@
     position: fixed;
     width: 3vw;
     height: 5.33vh;
-    border: 2px solid var(--detail-color);
+    border: 2px solid var(--secondary-color);
     border-radius: 100%;
     right: 1rem;
     transition: all 0.5s ease;
 }
 
 .leave:hover {
-    background-color: var(--detail-color);
+    background-color: var(--secondary-color);
     transition: all 0.5s ease;
 }
 

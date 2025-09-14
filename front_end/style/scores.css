@@ -14,7 +14,7 @@
   font-family: Verdana, Geneva, Tahoma, sans-serif; 
   font-size: 2vh;
   font-weight: 900; 
-  color: #FFFFFF; 
+  color: var(--text-color); 
   margin-bottom: 2vh; 
   text-align: center; 
 }
@@ -24,7 +24,7 @@
   display: flex;
   flex-direction: column; 
   gap: 2vh;
-  background-color: #5C3DD9;
+  background-color: var(--accent-color);
   padding: 2vh 1vw;
   border-radius: 2vh;
   min-width: 12vw;
@@ -35,16 +35,16 @@
   padding: 1.5vh 1vw;
   border-radius: 1vh;
   text-decoration: none;
-  color: #FFFFFF;
+  color: var(--text-color);
   font-weight: bold;
   text-align: center;
-  background-color: #3D3195;
+  background-color: var(--primary-color);
   transition: background 0.2s, transform 0.2s;
   font-size: 2vh;
 }
 
 .stats-item:hover {
-  background-color: #3259B3;
+  background-color: var(--hover-color);
   transform: translateX(0.5vw);
 }
 
@@ -70,21 +70,21 @@
   cursor: pointer;
   padding: 1vh 2vw;
   border-radius: 1vh;
-  background-color: #3D3195;
+  background-color: var(--primary-color);
   border: none;
-  color: #FFFFFF;
+  color: var(--text-color);
   font-size: 2vh;
   font-weight: bold;
   transition: background 0.2s;
 }
 
 .mode-btn:hover {
-  background-color: #3259B3;
+  background-color: var(--hover-color);
 }
 
 .mode-btn.active {
-  background-color: #FFFFFF;
-  color: #301446;
+  background-color: var(--text-color);
+  color: var(--background-color);
 }
 
 /* Cartão de estatísticas */
@@ -92,7 +92,7 @@
   display: flex;
   align-items: center;
   gap: 1vw;
-  background-color: #5C3DD9;
+  background-color: var(--accent-color);
   padding: 2vh 2vw;
   border-radius: 2vh;
   width: fit-content;
@@ -112,7 +112,7 @@
 table {
   width: 80%; 
   border-collapse: collapse;
-  background-color: #5C3DD9;
+  background-color: var(--accent-color);
   border-radius: 2vh;
   overflow: hidden;
   margin: 0 auto; 
@@ -120,18 +120,18 @@ table {
 
 th, td {
   padding: 1vh 1vw;
-  border-bottom: 1px solid #3D3195;
+  border-bottom: 1px solid var(--primary-color);
   text-align: center;
   font-size: 2vh;
-  color: #FFFFFF;
+  color: var(--text-color);
 }
 
 th {
-  background-color: #3D3195;
+  background-color: var(--primary-color);
 }
 
 tr:hover {
-  background-color: #3259B3;
+  background-color: var(--hover-color);
 }
 
 /* Títulos secundários */
