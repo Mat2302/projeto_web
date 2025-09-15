@@ -41,7 +41,7 @@
 }
 
 .link-game:first-child {
-    justify-self: start; 
+    justify-self: start;
 }
 
 .game-mode {
@@ -55,7 +55,7 @@
 }
 
 .link-game:last-child {
-    justify-self: end; 
+    justify-self: end;
 }
 
 .game {
@@ -88,8 +88,8 @@
 
 
 
-.game div:hover{
-    box-shadow: 2px 4px 8px rgba(56,163,165,1);
+.game div:hover {
+    box-shadow: 2px 4px 8px rgba(56, 163, 165, 1);
     transition: all 0.5s ease;
 }
 
@@ -117,7 +117,7 @@
     transition: all 0.5s ease;
 }
 
-.btn-leave{
+.btn-leave {
     width: 1vw;
 }
 
@@ -128,5 +128,3 @@
     width: 20vw;
     z-index: 7;
 }
-
-

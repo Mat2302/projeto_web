@@ -1,4 +1,4 @@
-.profile-header{
+.profile-header {
     background-color: #354FAB;
     border-bottom-left-radius: 50px;
     border-bottom-right-radius: 50px;
@@ -73,7 +73,7 @@ h2 {
 }
 
 .edit-profile:hover {
-    text-shadow: 2px 4px 8px rgba(56,163,165,1);
+    text-shadow: 2px 4px 8px rgba(56, 163, 165, 1);
     transition: all 0.5s ease;
 }
 
@@ -98,7 +98,7 @@ h2 {
     align-items: center;
     justify-content: center;
     color: #FFF;
-    gap: 0; 
+    gap: 0;
 }
 
 .stat-label {
