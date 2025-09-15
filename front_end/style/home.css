@@ -1,0 +1,85 @@
+.homepage {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.homepage-wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    align-items: center;
+}
+
+.container-home {
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    align-items: flex-start;
+    width: 50vw;
+    margin-left: 10vw;
+}
+
+.title-home {
+    color: var(--text-color);
+    z-index: 1;
+    font-weight: 900;
+    font-size: 4vw;
+}
+
+.text-home {
+    color: var(--text-color);
+    z-index: 1;
+    font-size: 1.5vw;
+}
+
+.robot-home {
+    margin-right: 10vw;
+    margin-top: 25vh;
+    z-index: 1;
+}
+
+.robot-home img{
+    width: 30vw;
+    height: auto;
+}
+
+.button-register {
+    width: 50vw;
+    margin-left: 25vw;
+    align-self: flex-start;
+    z-index: 1;
+}
+
+.button-register a {
+    color: var(--text-color);
+    background-color: var(--primary-color);
+    padding: 3vh 4vw;
+    border-radius: 30px;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all 0.3s ease;
+}
+
+.button-register a:hover {
+    background-color: var(--hover-color);
+    transition: all 0.3s ease;
+}
+
+.arrow-register {
+    height: 2vh;
+    width: auto;
+}
+
+.background-home-image {
+    position: absolute;
+    top: 0;
+    left: 0 ;
+    width: 50vw;
+    height: auto;
+    opacity: 0.6;
+    z-index: 0;
+}

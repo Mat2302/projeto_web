@@ -141,8 +141,12 @@
 
 .submit-login,
 .submit-register {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     background-color: var(--primary-color);
     color: var(--text-color);
+    text-decoration: none;
     width: 25vw;
     max-width: 50vh;
     min-width: 20vw;
@@ -177,7 +181,7 @@
     top: 50%;
     width: 18px;
     height: 24px;
-    cursor: pointergi;
+    cursor: pointer;
     transform: translateY(-50%);
 }
 
