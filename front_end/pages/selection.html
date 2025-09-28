@@ -6,6 +6,14 @@
   <link rel="stylesheet" href="../style/style.css">
 <link rel="stylesheet" href="../style/selection.css">
 
+<script>
+
+function novoJogo(tamanho) {
+    window.sessionStorage.setItem('tamanhoTabuleiro', tamanho);
+    window.location.href = 'board-game.html';
+}
+</script>
+
 </head>
 <body class="body">
   <header>
@@ -27,10 +35,10 @@
         <p class="welcome">Bem-vinda, laurarusso!</p>
         <h2 class="mode-selection">Selecione o modo de jogo</h2>
         <div class="game-modes">
-          <a href="board-game.html"><div class="mode mode-2x2"></div></a>
-          <a href="board-game.html"><div class="mode mode-4x4"></div></a>
-          <a href="board-game.html"><div class="mode mode-6x6"></div></a>
-          <a href="board-game.html"><div class="mode mode-8x8"></div></a>
+          <a onclick="novoJogo(4)"><div class="mode mode-2x2"></div></a>
+          <a onclick="novoJogo(16)"><div class="mode mode-4x4"></div></a>
+          <a onclick="novoJogo(36)"><div class="mode mode-6x6"></div></a>
+          <a onclick="novoJogo(64)"><div class="mode mode-8x8"></div></a>
         </div>
       </div>
 
