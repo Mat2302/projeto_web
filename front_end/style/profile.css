@@ -13,12 +13,16 @@
     top: 0;
 }
 
+h2 {
+    font-size: 2rem;
+}
+
+
 .profile-info {
     display: flex;
     flex-direction: column;
-    /* justify-content: flex-start; */
     padding: 1rem;
-    margin-top: 15rem;
+    margin-top: 10rem;
 }
 
 .profile-img {
@@ -69,7 +73,7 @@
 }
 
 .edit-profile:hover {
-    text-shadow: 2px 4px 8px rgba(56,163,165,1);
+    text-shadow: 2px 4px 8px rgba(56, 163, 165, 1);
     transition: all 0.5s ease;
 }
 
@@ -94,7 +98,7 @@
     align-items: center;
     justify-content: center;
     color: #FFF;
-    gap: 0; 
+    gap: 0;
 }
 
 .stat-label {

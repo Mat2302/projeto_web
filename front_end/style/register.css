@@ -141,8 +141,12 @@
 
 .submit-login,
 .submit-register {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     background-color: var(--primary-color);
     color: var(--text-color);
+    text-decoration: none;
     width: 25vw;
     max-width: 50vh;
     min-width: 20vw;
