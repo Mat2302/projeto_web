@@ -265,13 +265,24 @@ export class JogoController {
         console.log("Tempo: 0 segundos (modo clássico)");
     }
 
-    
-    /*
-    window.sessionStorage.setItem("tabuleiroSize", this.tabuleiro.getTotalCelulas());
-    window.sessionStorage.setItem("movimentos", this.movimentos);
-    window.sessionStorage.setItem("pontuacao", this.paresEncontrados);
-    window.sessionStorage.setItem("tempo", tempo || 0);
-    */
+    const ranking = JSON.parse(localStorage.getItem("ranking")) || {
+        "2x2": [],
+        "4x4": [],
+        "6x6": [],
+        "8x8": []
+    };
+
+    const modo = `${this.tabuleiro.tamanho}x${this.tabuleiro.tamanho}`;
+    ranking[modo].push({
+        jogador: "Placeholder", // Depois implementar quando login estiver funcionando
+        movimentos: this.movimentos,
+        pontuacao: this.paresEncontrados,
+        tempo: tempo || 0
+    });
+    localStorage.setItem("ranking", JSON.stringify(ranking));
+
+    const teste = localStorage.getItem("ranking");
+    console.log("Ranking atualizado:", JSON.parse(teste));
 }
 
     /**

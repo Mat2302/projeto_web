@@ -16,7 +16,7 @@
     <!-- Menu lateral -->
     <nav class="stats-nav">
       <div class="nav-label">Modos de Jogo</div>
-      <a href="#" class="stats-item">2x2</a>
+      <a href="#" class="stats-item active">2x2</a>
       <a href="#" class="stats-item">4x4</a>
       <a href="#" class="stats-item">6x6</a>
       <a href="#" class="stats-item">8x8</a>
@@ -37,10 +37,7 @@
             <img src="../../img/second.svg" alt="Prata">
           </div>
           <div class="text">
-            <h3>2º Lugar</h3>
-            <p>Sean Torres</p>
-            <p>35 partidas</p>
-            <p>Média: 3:20</p>
+            <!-- Texto preenchido automaticamente -->
           </div>
         </div>
 
@@ -49,10 +46,7 @@
             <img src="../../img/first.svg" alt="Ouro">
           </div>
           <div class="text">
-            <h3>1º Lugar</h3>
-            <p>Laura Rodrigues Russo</p>
-            <p>40 partidas</p>
-            <p>Média: 2:45</p>
+            <!-- Texto preenchido automaticamente -->
           </div>
         </div>
 
@@ -61,10 +55,7 @@
             <img src="../../img/third.svg" alt="Bronze">
           </div>
           <div class="text">
-            <h3>3º Lugar</h3>
-            <p>Matheus Figueiredo</p>
-            <p>28 partidas</p>
-            <p>Média: 4:10</p>
+            <!-- Texto preenchido automaticamente -->
           </div>
         </div>
       </div>
@@ -84,30 +75,13 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>4º</td>
-            <td>Ada Lovelace</td>
-            <td>25</td>
-            <td>5:00</td>
-          </tr>
-          <tr>
-            <td>5º</td>
-            <td>Alan Turing</td>
-            <td>20</td>
-            <td>6:10</td>
-          </tr>
-          <tr>
-            <td>6º</td>
-            <td>Grace Hopper</td>
-            <td>18</td>
-            <td>4:50</td>
-          </tr>
+          <!-- Texto preenchido automaticamente -->
         </tbody>
       </table>
 
       <div class="mode-switch">
-        <button class="mode-btn active">Clássico</button>
-        <button class="mode-btn">Com Tempo</button>
+        <button id="classic-btn" class="mode-btn active">Clássico</button>
+        <button id="timer-btn" class="mode-btn">Com Tempo</button>
       </div>
     </section>
 
@@ -117,6 +91,7 @@
   </div>
 
   <script src="../src/header.js"></script>
+  <script src="../src/controllers/ranking.js"></script>
 </body>
 
 </html>
