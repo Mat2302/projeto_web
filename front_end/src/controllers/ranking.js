@@ -6,57 +6,131 @@ document.addEventListener("DOMContentLoaded", () => {
         "8x8": []
     };
 
+    const gameType    = document.querySelectorAll(".mode-btn");
+    const rankingBody = document.querySelector("table tbody");
     const modoLinks   = document.querySelectorAll(".stats-item");
     const podium      = document.querySelectorAll(".podium-card .text");
-    const rankingBody = document.querySelector("table tbody");
-    const classicBtn   = document.getElementById("classic-btn");
-    const timerBtn     = document.getElementById("timer-btn");
 
+    let currentType = 0;
     let currentMode = "2x2";
-    let currentType = "classico";
 
     function obtainRanking(mode, rankingType) {
+        updateTableHead(rankingType);
         let players = rankingData[mode] || [];
-
-        if (rankingType === "com tempo") {
+        
+        if (rankingType == 1)
             players = players.filter(player => player.tempo > 0);
-            classicBtn.classList.remove("active");
-            timerBtn.classList.add("active");
-        } else {
-            classicBtn.classList.add("active");
-            timerBtn.classList.remove("active");
-        }
 
-        players.sort((a, b) => {
-            if (b.pontuacao !== a.pontuacao)
-                return b.pontuacao - a.pontuacao;
-            return a.tempo - b.tempo;
-        });
-        podium.forEach((element, index) => {
-            const player = players[index];
-            if (player) {
-                element.innerHTML = `
-                    <h3>${index + 1}ª Lugar</h3>
-                    <p>${player.jogador}</p>
-                    <p>${player.pontuacao} pontos</p>
-                    <p>${player.tempo} segundos</p>`;
-            } else {
-                element.innerHTML = `
-                    <h3>${index + 1}ª Lugar</h3>
-                    <p>--</p>
-                    <p>--</p>
-                    <p>--</p>`;
+        const bestScore = [];
+        players.forEach(player => {
+            const exists = bestScore.find(p => p.jogador === player.jogador);    
+            if (!exists) {
+                bestScore.push(player);
+                return;
+            }
+
+            const changeTimeMode =
+                (rankingType == 0 && player.movimentos < exists.movimentos) ||
+                (rankingType == 1 && player.tempo < exists.tempo);
+            if (changeTimeMode) {
+                const index = bestScore.indexOf(exists);
+                bestScore[index] = player;
             }
         });
 
+        if (rankingType == 0) {
+            bestScore.sort((a, b) => {
+                if (a.movimentos !== b.movimentos)
+                    return a.movimentos - b.movimentos;
+                return b.pontuacao - a.pontuacao;
+            });
+        }
+
+        if (rankingType == 1) {
+            bestScore.sort((a, b) => {
+                if (a.tempo !== b.tempo)
+                    return a.tempo - b.tempo;
+                return a.movimentos - b.movimentos;
+            });
+        }
+
+        updateTableBody(bestScore);
+    }
+
+    function updateTableHead(rankingType) {
+        const timerBtn     = document.getElementById("timer-btn");
+        const classicBtn   = document.getElementById("classic-btn");
+        const thead        = document.querySelector("table thead tr");
+
+        if (rankingType == 0) {
+            classicBtn.classList.add("active");
+            timerBtn.classList.remove("active");
+            thead.innerHTML = `
+                <th>Ranking</th>
+                <th>Jogador</th>
+                <th>Movimentos</th>
+                <th>Pontuação</th>`;
+        }
+
+        if (rankingType == 1) {
+            classicBtn.classList.remove("active");
+            timerBtn.classList.add("active");
+            thead.innerHTML = `
+                <th>Ranking</th>
+                <th>Jogador</th>
+                <th>Movimentos</th>
+                <th>Tempo</th>`;
+        }
+    }
+
+    function updateTableBody(bestScore) {
+        const positions = {first: 0, second: 1, third: 2};
+        
+        podium.forEach((element) => {
+            let podiumPosition;
+            switch (true) {
+                case element.parentElement.classList.contains("first"):
+                    podiumPosition = "first";
+                    break;
+                case element.parentElement.classList.contains("second"):
+                    podiumPosition = "second";
+                    break;
+                case element.parentElement.classList.contains("third"):
+                    podiumPosition = "third";
+                    break;
+                default:
+                    podiumPosition = "third";
+            }
+
+            const position = positions[podiumPosition];
+            const player = bestScore[position];
+
+            if (player) {
+                element.innerHTML = `
+                    <h3>${position + 1}ª Lugar</h3>
+                    <p>${player.jogador}</p>
+                    <p>${player.movimentos} movimentos</p>
+                    <p>${player.pontuacao} pontos</p>`;
+                return;
+            }
+            element.innerHTML = `
+                <h3>${position + 1}ª Lugar</h3>
+                <p>--</p>
+                <p>--</p>
+                <p>--</p>`;
+        });
+
         rankingBody.innerHTML = "";
-        players.slice(3).forEach((element, index) => {
+        bestScore.slice(3).forEach((element, index) => {
+            if (!element)
+                return;
+
             const row = document.createElement("tr");
             row.innerHTML = `
                 <td>${index + 4}º</td>
                 <td>${element.jogador}</td>
-                <td>${element.pontuacao}</td>
-                <td>${element.tempo} segundos</td>`;
+                <td>${element.movimentos}</td>
+                <td>${element.pontuacao}</td>`;
             rankingBody.appendChild(row);
         });
     }
@@ -67,17 +141,16 @@ document.addEventListener("DOMContentLoaded", () => {
             modoLinks.forEach(l => l.classList.remove("active"));
             link.classList.add("active");
             currentMode = link.textContent.trim();
-            obtainRanking(currentMode);
+            obtainRanking(currentMode, currentType);
         });
     });
 
-    const gameType = document.querySelectorAll(".mode-btn");
-    gameType.forEach(btn => {
-        btn.addEventListener("click", () => {
+    gameType.forEach(button => {
+        button.addEventListener("click", () => {
             gameType.forEach(b => b.classList.remove("active"));
-            btn.classList.add("active");
-            const rankingType = btn.textContent.trim().toLowerCase();
-            obtainRanking(currentMode, rankingType);
+            button.classList.add("active");
+            currentType = button.value;
+            obtainRanking(currentMode, currentType);
         });
     });
 
