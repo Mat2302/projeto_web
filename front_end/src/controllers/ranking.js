@@ -106,11 +106,22 @@ document.addEventListener("DOMContentLoaded", () => {
             const player = bestScore[position];
 
             if (player) {
-                element.innerHTML = `
-                    <h3>${position + 1}ª Lugar</h3>
-                    <p>${player.jogador}</p>
-                    <p>${player.movimentos} movimentos</p>
-                    <p>${player.pontuacao} pontos</p>`;
+                if (currentType == 0) {
+                    element.innerHTML = `
+                        <h3>${position + 1}ª Lugar</h3>
+                        <p>${player.jogador}</p>
+                        <p>${player.movimentos} movimentos</p>
+                        <p>${player.pontuacao} pontos</p>`;
+                }
+
+                if (currentType == 1) {
+                    element.innerHTML = `
+                        <h3>${position + 1}ª Lugar</h3>
+                        <p>${player.jogador}</p>
+                        <p>${player.movimentos} movimentos</p>
+                        <p>${player.tempo}</p>`;
+                }
+                
                 return;
             }
             element.innerHTML = `
