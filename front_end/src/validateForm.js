@@ -68,6 +68,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (!validate) {
       e.preventDefault();
+    } else {
+      saveLogin();
     }
   });
 });
@@ -86,4 +88,9 @@ function validateInput(input, span, message) {
   }
 
   return validate;
+}
+
+function saveLogin() {
+  const username = document.getElementById("username").value;
+  sessionStorage.setItem("username", username);
 }

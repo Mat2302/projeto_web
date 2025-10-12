@@ -273,8 +273,9 @@ export class JogoController {
     };
 
     const modo = `${this.tabuleiro.tamanho}x${this.tabuleiro.tamanho}`;
+    const nome = sessionStorage.getItem("username") || "Anônimo";
     ranking[modo].push({
-        jogador: "Nome", // Depois implementar quando login estiver funcionando
+        jogador: nome,
         movimentos: this.movimentos,
         pontuacao: this.paresEncontrados,
         tempo: tempo || 0
