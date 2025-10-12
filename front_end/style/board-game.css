@@ -142,5 +142,5 @@
     bottom: 0;
     left: 9vh;
     width: 20vw;
-    z-index: 7;
+    z-index: -1;
 }

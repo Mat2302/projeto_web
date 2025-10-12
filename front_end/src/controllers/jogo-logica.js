@@ -274,7 +274,7 @@ export class JogoController {
 
     const modo = `${this.tabuleiro.tamanho}x${this.tabuleiro.tamanho}`;
     ranking[modo].push({
-        jogador: "Placeholder", // Depois implementar quando login estiver funcionando
+        jogador: "Nome", // Depois implementar quando login estiver funcionando
         movimentos: this.movimentos,
         pontuacao: this.paresEncontrados,
         tempo: tempo || 0

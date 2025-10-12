@@ -31,8 +31,9 @@
 
                 <label class="label-input">
                     <img src="../../img/icon_lock.svg" class="img-icon-label" alt="ícone da Senha">
-                    <input type="password" class="input-login" placeholder="Senha">
-                    <img src="../../img/icon_eye.svg" class="img-icon-pass" alt="ícone do olho">
+                    <input type="password" id="pssd" class="input-login" placeholder="Senha">
+                    <img src="../../img/icon_eye.svg" class="img-icon-pass" alt="ícone do olho"
+                        onclick='switchType("pssd")'>
                 </label>
 
 
@@ -45,6 +46,7 @@
             </div>
         </div>
     </section>
+    <script src="../src/eyeLock.js"></script>
 </body>
 
 </html>
