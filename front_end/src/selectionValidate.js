@@ -1,18 +1,18 @@
 "use strict";
 
-function saveForms() {
-//   event.preventDefault();
+function saveForms(event) {
   const mode = document.getElementById("mode").value;
   const radioSelected = document.querySelector('input[name="table"]:checked');
 
   if (!radioSelected) {
     alert("Selecione um tabuleiro!");
+    event.preventDefault(); 
     return;
   }
 
   const checkBtn = radioSelected.value;
 
-  
-  window.iniciarJogo(mode, checkBtn);
-  window.location.href = "game-board.html";
+  sessionStorage.setItem("modoJogo", mode);
+  sessionStorage.setItem("tamanhoTabuleiro", checkBtn);
 }
+

@@ -26,8 +26,11 @@ import { JogoController } from './controllers/jogo-logica.js';
  *          A função pode ser chamada com diferentes modos de jogo.
  * @todo Atualmente, a pagina selection.html salva o tamanho do tabuleiro no sessionStorage, mas não o modo de jogo. Adicionar essa funcionalidade.
  */
-function iniciarJogo(modo, total) {
+function iniciarJogo() {
     const container = document.querySelector('.game');
+
+    const total = parseInt(sessionStorage.getItem("tamanhoTabuleiro"));
+    const modo = sessionStorage.getItem("modoJogo");
 
     if (modo == "classic") {
         window.jogo = new JogoController(container, total, false);
@@ -44,8 +47,10 @@ function iniciarJogo(modo, total) {
 function sair() {
     if (confirm("Tem certeza que deseja sair? Seu progresso será perdido.")) {
         window.location.href = 'selection.html';
+        sessionStorage.clear();
     }
 }
 
+iniciarJogo();
+
 window.sair = sair;
-window.iniciarJogo = iniciarJogo;
