@@ -9,19 +9,12 @@
     overflow: hidden;
 }
 
-.h2-game {
-    text-align: center;
-    width: 80vw;
-    color: var(--text-color);
-    font-size: 1.4rem;
-}
-
 .label-game {
     display: grid;
     grid-template-columns: 1fr auto 1fr;
     align-items: center;
     width: 60vw;
-    margin: 0 auto;
+    margin: 1rem;
 }
 
 .link-game {
@@ -63,20 +56,21 @@
 .game {
     display: grid;
     gap: 0.5rem;
-    width: 80%;
-    height: 80%;
-    margin-top: 5vh;
+    padding: 0.2rem;
+    width: 50%;
+    /* height: 80%; */
+    margin-top: 1vh;
     place-items: center;
-    background-color: transparent;
-    margin-bottom: 1vh;
+    border-radius: 15px;
+    background-color:rgb(61, 49, 149, 0.5);
 }
 
 .game div {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 9.625vw;
-    height: 17.11vh;
+    width: 5.2vw;
+    height: 9.25vh;
     background-color: var(--text-color);
     border: 9px var(--secondary-color);
     border-style: double;

@@ -1,26 +1,27 @@
 "use strict";
 
 document.addEventListener("DOMContentLoaded", () => {
-    var header = document.querySelector(".header-container");
+  const headerContainer = document.querySelector(".header-container");
 
-    if(!header) {
-        console.error("Div 'header-container' não encontrada!");
-        return;
-    }
+  if (!headerContainer) {
+    alert("A div 'header-container' não foi encontrada!");
+    return;
+  }
 
-    fetch("../components/header.html")
-    .then(response =>  {
-        if(!response.ok) { //http 
-            throw new Error("Arquivo não encontrado! status: " + response.status);
-        }
-        return response.text();
-    })
+  const header = document.createElement("header");
 
-    .then(html => {
-        header.innerHTML = html;
-    })
-
-    .catch(error => {
-        console.error("Falha ao carregar o header: ", error);
-    });
+  header.innerHTML = `
+    <h1 class="title-header">Memory Overflow</h1>
+    <nav class="nav-header">
+      <a href="selection.html">Jogar</a>
+      <a href="ranking.html">Ranking</a>
+      <a href="scores.html">Scores</a>
+      <a href="profile.html">Perfil</a>
+    </nav>
+    <div class="exit-header">
+      <a href="../index.html">Sair <img src="../../img/exit.svg" alt="Sair"></a>
+    </div>
+  `;
+  headerContainer.appendChild(header);
+  
 });

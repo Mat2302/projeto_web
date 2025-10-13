@@ -21,28 +21,21 @@ import { JogoController } from './controllers/jogo-logica.js';
 
 /**
  * Inicia uma nova instância do jogo de memória.
- * @param {number} modo - Modo de jogo (0 para sem timer, 1 para com timer).
+ * @param {number} modo - Modo de jogo
  * @details O tamanho do tabuleiro é recuperado do sessionStorage.
  *          A função pode ser chamada com diferentes modos de jogo.
  * @todo Atualmente, a pagina selection.html salva o tamanho do tabuleiro no sessionStorage, mas não o modo de jogo. Adicionar essa funcionalidade.
  */
-function iniciarJogo(modo) {
-    const total = parseInt(window.sessionStorage.getItem('tamanhoTabuleiro'));
+function iniciarJogo(modo, total) {
     const container = document.querySelector('.game');
-    modo = 1;
 
-    if (modo === 0) {
+    if (modo == "classic") {
         window.jogo = new JogoController(container, total, false);
     }
-    else if (modo === 1) {
+    else if (modo == "timer") {
         window.jogo = new JogoController(container, total, true);
     }
 }
-
-/**
- * O jogo é iniciado quando a janela é carregada.
- */
-window.onload = iniciarJogo;
 
 /**
  * @brief Sai do jogo, retornando à tela de seleção.

@@ -1,4 +1,4 @@
-//
+// https://www.w3schools.com/js/js_regexp.asp
 // https://medium.com/xp-inc/regex-um-guia-pratico-para-expressões-regulares-1ac5fa4dd39f
 // https://medium.com/@sketch.paintings/email-validation-with-javascript-regex-e1b40863ed23
 // https://pt.stackoverflow.com/questions/130541/regex-para-validar-data-yyyy-mm-dd

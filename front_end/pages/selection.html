@@ -1,49 +1,62 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
-  <meta charset="UTF-8">
-  <title>Escolha o modo de Jogo</title>
-  <link rel="stylesheet" href="../style/style.css">
-  <link rel="stylesheet" href="../style/selection.css">
-
-<script>
-
-  function novoJogo(tamanho) {
-      window.sessionStorage.setItem('tamanhoTabuleiro', tamanho);
-      window.location.href = 'board-game.html';
-  }
-</script>
+    <meta charset="UTF-8">
+    <title>Escolha o modo de Jogo</title>
+    <link rel="stylesheet" href="../style/style.css">
+    <link rel="stylesheet" href="../style/selection.css">
 
 </head>
+
 <body class="body">
 
-  <div class="header-container"></div>
+    <div class="header-container"></div>
 
-  <div class="selection-wrapper">
-    <section>
-      <div class="left-content">
-        <p class="welcome">Bem-vinda, laurarusso!</p>
-        <h2 class="mode-selection">Selecione o modo de jogo</h2>
-        <div class="game-modes">
-          <a onclick="novoJogo(4)"><div class="mode mode-2x2"></div></a>
-          <a onclick="novoJogo(16)"><div class="mode mode-4x4"></div></a>
-          <a onclick="novoJogo(36)"><div class="mode mode-6x6"></div></a>
-          <a onclick="novoJogo(64)"><div class="mode mode-8x8"></div></a>
+    <div class="selection-wrapper">
+        <section>
+            <div class="left-content">
+                <p class="welcome">Bem-vinda, laurarusso!</p>
+                <h2 class="mode-selection">Selecione o modo de jogo</h2>
+                <div class="game-modes">
+                    <form action="board-game.html" id="formSelection">
+                        <div class="wrap-mode">
+                            <select name="mode" id="mode">
+                                <option value="classic">Clássico</option>
+                                <option value="timer">Contra o tempo</option>
+                            </select>
+                        </div>
+
+                        <div class="wrap-tableMode">
+                            <input type="radio" name="table" id="2x2" value="4">
+                            <label for="2x2"><img src="../../img/2x2.svg" alt="2x2 imagem"></label>
+                            <input type="radio" name="table" id="4x4" value="16">
+                            <label for="4x4"><img src="../../img/4x4.svg" alt="4x4 imagem"></label>
+                            <input type="radio" name="table" id="6x6" value="32">
+                            <label for="6x6"><img src="../../img/6x6.svg" alt="6x6 imagem"></label>
+                            <input type="radio" name="table" id="8x8" value="64">
+                            <label for="8x8"><img src="../../img/8x8.svg" alt="8x8 imagem"></label>
+                        </div>
+                        <input type="submit" value="Jogar" onclick="saveForms()">
+
+                    </form>
+                </div>
+            </div>
+
+            <div class="right-content">
+                <img src="../../img/robo.svg" alt="Ilustração robô">
+            </div>
+        </section>
+
+
+        <div class="background-selection-image">
+            <img src="../../img/wave-board.svg" alt="Wave background">
         </div>
-      </div>
-
-      <div class="right-content">
-        <img src="../../img/robo.svg" alt="Ilustração robô">
-      </div>
-    </section>
-
-
-    <div class="background-selection-image">
-      <img src="../../img/wave-board.svg" alt="Wave background">
     </div>
-  </div>
 
 
-  <script src="../src/header.js"></script>
+    <script src="../src/header.js"></script>
+    <script src="../src/selectionValidate.js"></script>
 </body>
+
 </html>

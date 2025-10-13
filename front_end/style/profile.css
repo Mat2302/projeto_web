@@ -22,7 +22,12 @@ h2 {
     display: flex;
     flex-direction: column;
     padding: 1rem;
-    margin-top: 10rem;
+    margin-top: 6rem;
+}
+
+.line-data {
+    display: flex;
+    flex-direction: row;
 }
 
 .profile-img {
@@ -44,19 +49,28 @@ h2 {
     object-fit: contain;
 }
 
-.name {
+.name,
+.tel {
     margin: 0;
-    font-size: 1.8rem;
-    font-weight: 900;
-    background-color: transparent;
+    font-size: 1rem;
+    background-color: rgba(250, 255, 255, 0.764);
     border: none;
-    color: #FFF;
+    color: var(--primary-color);
     padding: 0.5rem;
+    text-decoration: underline;
+    margin-right: 1rem;
+    border-radius: 10px;
+}
+
+.name {
+    font-size: 1.5rem;
+    font-weight: 900;
 }
 
 .username,
 .email,
-.edit-profile {
+.birth,
+.cpf {
     margin: 0;
     font-size: 1rem;
     background-color: transparent;
@@ -66,15 +80,8 @@ h2 {
 }
 
 .edit-profile {
-    text-decoration: none;
-    transition: all 0.5s ease;
-    display: flex;
-    justify-content: flex-end;
-}
-
-.edit-profile:hover {
-    text-shadow: 2px 4px 8px rgba(56, 163, 165, 1);
-    transition: all 0.5s ease;
+    width:1rem;
+    position: relative;
 }
 
 
