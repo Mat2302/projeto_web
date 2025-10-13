@@ -1,9 +1,11 @@
-// https://www.w3schools.com/js/js_regexp.asp
+//
 // https://medium.com/xp-inc/regex-um-guia-pratico-para-expressões-regulares-1ac5fa4dd39f
 // https://medium.com/@sketch.paintings/email-validation-with-javascript-regex-e1b40863ed23
 // https://pt.stackoverflow.com/questions/130541/regex-para-validar-data-yyyy-mm-dd
 
 "use strict";
+
+var isValid = false;
 
 document.addEventListener("DOMContentLoaded", () => {
   var form = document.getElementById("registerForm");
@@ -71,11 +73,16 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
 
-    if (!validate) {
+    if (!validate || !isValid) {
       e.preventDefault();
-    } else {
-      saveLogin();
+      if (!isValid) {
+        var photoAlert = document.getElementById("alertFile");
+        photoAlert.innerHTML = `<img src="../../img/danger.png" class="img-icon-alert"/> A imagem deve ter 1x1 (quadrada)!`;
+        document.getElementById("photo").style.borderColor = "#d00000";
+      }
+      return;
     }
+    saveLogin();
   });
 });
 
@@ -84,18 +91,9 @@ function validateInput(input, span, message) {
   var validate = true;
   var regex;
 
-  //   if (values == "" || values == null) {
-  //     span.innerHTML = `<img src="../../img/danger.png" class="img-icon-alert" alt="Ícone de alerta"/> ${message}`;
-  //     input.style.borderColor = "#d00000";
-  //     validate = false;
-  //   } else {
-  //     span.innerHTML = "";
-  //     input.style.borderColor = "#b5e48c";
-  //   }
-
   switch (input.id) {
     case "name":
-      regex = /^[A-Za-zÀ-ü\s]{3,}$/;
+      regex = /^(?=.*[\s])[A-Za-zÀ-ü\s]{3,}$/;
       if (!regex.test(values)) {
         message = "O nome deve conter apenas letras e pelo menos 3 caracteres!";
         validate = false;
@@ -118,29 +116,29 @@ function validateInput(input, span, message) {
       break;
     case "birth":
       if (!validateDate(values)) {
-        message = "A data de nascimento deve ser válida!";
+        message = "A data de nascimento deve ser válida! (xx/xx/xxxx)";
         validate = false;
       }
       break;
 
     case "telephone":
-      regex = /^\(?\d{2}\)?\s?\d{4,5}-?\d{4}$/;
+      regex = /^\d{10,11}$/;
       if (!regex.test(values)) {
-        message = "O telefone inserido não é válido - (00)0000-0000";
+        message = "O telefone inserido não é válido (aceita apenas números)!";
         validate = false;
       }
       break;
 
     case "cpf":
-      regex = /^\d{3}\.?\d{3}\.?\d{3}\-?\d{2}\$/;
+      regex = /^\d{11}$/;
       if (!regex.test(values)) {
-        message = "O CPF inserido não é válido - 000.000.000-00";
+        message = "O CPF inserido não é válido (aceita apenas números)!";
         validate = false;
       }
       break;
 
     case "pssd":
-      regex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
+      regex = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[!@#$%&*])[A-Za-z\d!@#$%&*]{8,}$/;
       if (!regex.test(values)) {
         message =
           "A senha deve conter ao menos 8 caracteres, com letras e números!";
@@ -153,13 +151,19 @@ function validateInput(input, span, message) {
       if (!file) {
         message = "Selecione uma imagem!";
         validate = false;
+        isValid = false;
       } else {
         var img = new Image();
         img.src = URL.createObjectURL(file);
         img.onload = () => {
           if (img.width != img.height) {
-            span.innerHTML = `<img src="../../img/danger.png" class="img-icon-alert"/> A imagem deve ser 1x1.`;
+            span.innerHTML = `<img src="../../img/danger.png" class="img-icon-alert"/> A imagem deve ter 1x1 (quadrada)!`;
             input.style.borderColor = "d00000";
+            isValid = false;
+          } else {
+            span.innerHTML = "";
+            input.style.borderColor = "#b5e48c";
+            isValid = true;
           }
         };
       }
@@ -170,11 +174,13 @@ function validateInput(input, span, message) {
     span.innerHTML = `<img src="../../img/danger.png" class="img-icon-alert" alt="Ícone de alerta"/> ${message}`;
     input.style.borderColor = "#d00000";
     return false;
-  } else {
+  } else if (input.id !== "photo") {
     span.innerHTML = "";
     input.style.borderColor = "#b5e48c";
     return true;
   }
+
+  return true;
 }
 
 function validateDate(date) {
