@@ -278,12 +278,10 @@ export class JogoController {
         jogador: nome,
         movimentos: this.movimentos,
         pontuacao: this.paresEncontrados,
-        tempo: tempo || 0
+        tempo: tempo || 0,
+        data: new Date().toLocaleString()
     });
     localStorage.setItem("ranking", JSON.stringify(ranking));
-
-    const teste = localStorage.getItem("ranking");
-    console.log("Ranking atualizado:", JSON.parse(teste));
 }
 
     /**

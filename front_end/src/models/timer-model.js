@@ -55,6 +55,7 @@ export class Timer {
      */
     pausar() {
         if (!this.ativo) return;
+        this.tempoDecorrido = Date.now() - this.tempoInicial;
         clearInterval(this.intervalo);
         this.ativo = false;
     }
