@@ -4,11 +4,16 @@ document.addEventListener("DOMContentLoaded", () => {
   var form = document.getElementById("registerForm");
 
   var inputs = {
-    email: {
-      input: document.getElementById("email"),
-      span: document.getElementById("alertEmail"),
-      message: "O email deve ser válido!",
+    username: {
+      input: document.getElementById("username"),
+      span: document.getElementById("alertUser"),
+      message: "O usuário deve ser preenchido!",
     },
+    // email: {
+    //   input: document.getElementById("email"),
+    //   span: document.getElementById("alertEmail"),
+    //   message: "O email deve ser válido!",
+    // },
 
     pssd: {
       input: document.getElementById("pssd"),
@@ -44,13 +49,20 @@ function validateInput(input, span, message) {
   var regex;
 
   switch (input.id) {
-    case "email":
-      regex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    case "username":
+      regex = /^[A-Za-z0-9._]{3,20}$/;
       if (!regex.test(values)) {
-        message = "Email inválido!";
+        message = "O username deve ter entre 3 e 20 caracteres, sem espaços!";
         validate = false;
       }
       break;
+    // case "email":
+    //   regex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    //   if (!regex.test(values)) {
+    //     message = "Email inválido!";
+    //     validate = false;
+    //   }
+    //   break;
     case "pssd":
       regex = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[!@#$%&*])[A-Za-z\d!@#$%&*]{8,}$/;
       if (!regex.test(values)) {
@@ -73,14 +85,6 @@ function validateInput(input, span, message) {
 }
 
 function saveLogin() {
-  var email = document.getElementById("email").value;
-  if (email) {
-    // Aqui ficaria uma lógica que seria implementada com o backend
-    // Quando o usuário fizesse o login, seria encontrado o username que combine
-    // Com o email digitado, aí deixaria o username salvo no sessionStorage
-    // Isso porque o jogo usa o username para mostrar no ranking
-    // Por enquanto, só para teste, vou deixar um username fixo com base no email
-    var username = email.split("@")[0];
-    sessionStorage.setItem("username", username);
-  }
+  const username = document.getElementById("username").value;
+  sessionStorage.setItem("username", username);
 }
