@@ -19,10 +19,11 @@ export class JogoView {
    * @param {HTMLElement} container - Elemento HTML que contém o tabuleiro do jogo.
    * @param {HTMLElement} tempoElement - Elemento HTML que exibe o tempo decorrido (opcional).
    */
-  constructor(container) {
+  constructor(container, reiniciar) {
     this.container = container;
     this.container.classList.add("game");
     this.tempoElement = null;
+    this.reiniciar = reiniciar;
   }
 
   /**
@@ -149,12 +150,17 @@ export class JogoView {
    * @param {number} [tempo] - Tempo decorrido em segundos (opcional).
    * @details A mensagem inclui o número de movimentos e, se fornecido, o tempo decorrido formatado em minutos e segundos.
    */
-  mostrarMensagemFinal(movimentos, tempo) {
+  mostrarMensagemFinal({movimentos = 0, tempo = null, vitoria = null, tempoLimite = null} = {}) {
+    
+    const minutos = Math.floor(tempo / 60);
+    const segundos = tempo % 60;
+
+    if (vitoria === true) {
+
     let mensagem = `Parabéns! Você encontrou todos os pares em ${movimentos} movimentos`;
 
     if (tempo !== null && tempo !== undefined) {
-      const minutos = Math.floor(tempo / 60);
-      const segundos = tempo % 60;
+      
 
       if (minutos > 0) {
         mensagem += ` e ${minutos} ${minutos === 1 ? "minuto" : "minutos"}`;
@@ -170,6 +176,27 @@ export class JogoView {
 
     mensagem += "!";
     alert(mensagem);
+
+}
+
+    else if (vitoria === false) {
+
+    let mensagem = `Tempo esgotado! Você não conseguiu encontrar todos os pares a tempo (${minutos}:${segundos}). Você fez ${movimentos} movimentos`;
+    alert(mensagem);
+    }
+
+    else if (vitoria === null || vitoria === undefined) {
+
+    let mensagem = `O jogo terminou! Você fez ${movimentos} movimentos`;
+    alert(mensagem);
+      }
+
+    const jogarNovamente = confirm("Deseja jogar novamente?");
+  if (jogarNovamente) {
+    this.reiniciar();
+  } else {
+    window.location.href = "scores.html";
+  }
   }
 
   /**

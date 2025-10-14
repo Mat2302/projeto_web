@@ -1,18 +1,22 @@
 "use strict";
 
-function saveForms(event) {
-  const mode = document.getElementById("mode").value;
-  const radioSelected = document.querySelector('input[name="table"]:checked');
+document.addEventListener("DOMContentLoaded", () => {
+  const form = document.getElementById("formSelection");
 
-  if (!radioSelected) {
-    alert("Selecione um tabuleiro!");
-    event.preventDefault(); 
-    return;
-  }
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
 
-  const checkBtn = radioSelected.value;
+    const mode = document.getElementById("mode").value;
+    const radioSelected = document.querySelector('input[name="table"]:checked');
 
-  sessionStorage.setItem("modoJogo", mode);
-  sessionStorage.setItem("tamanhoTabuleiro", checkBtn);
-}
+    if (!radioSelected) {
+      alert("Selecione um tabuleiro!");
+      return; // impede navegação
+    }
 
+    sessionStorage.setItem("modoJogo", mode);
+    sessionStorage.setItem("tamanhoTabuleiro", radioSelected.value);
+
+    window.location.href = "board-game.html";
+  });
+});

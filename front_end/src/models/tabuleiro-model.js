@@ -135,7 +135,7 @@ export class Tabuleiro {
      * @param {Object.<number, string>} imagensDict - Dicionário de imagens disponíveis para o jogo.
      * @see imagens-dict.js
      */
-    reset() {
+    reset(imagensDict) {
         this.celulas.forEach(celula => celula.reset());
         this.inicializarCelulas(imagensDict);
     }

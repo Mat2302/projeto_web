@@ -45,12 +45,16 @@ function iniciarJogo() {
  * @details Exibe uma confirmação antes de redirecionar o usuário para a tela de seleção.
  */
 function sair() {
-    if (confirm("Tem certeza que deseja sair? Seu progresso será perdido.")) {
-        window.location.href = 'selection.html';
-        // sessionStorage.clear();
+    if (jogo.isJogoAtivo() == true) {
+        const confirmar = confirm("Tem certeza que deseja sair? O progresso atual será perdido.");
+        if (confirmar) {
+            jogo.finalizarJogoPorDesistencia();
+            window.location.href = 'selection.html';
+            // sessionStorage.clear();
+        }
     }
-}
+    }
 
-iniciarJogo();
+window.onload = iniciarJogo;
 
 window.sair = sair;
