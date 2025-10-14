@@ -47,7 +47,7 @@ function iniciarJogo() {
 function sair() {
     if (confirm("Tem certeza que deseja sair? Seu progresso será perdido.")) {
         window.location.href = 'selection.html';
-        sessionStorage.clear();
+        // sessionStorage.clear();
     }
 }
 

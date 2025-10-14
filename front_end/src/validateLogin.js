@@ -73,6 +73,14 @@ function validateInput(input, span, message) {
 }
 
 function saveLogin() {
-  const email = document.getElementById("email").value;
-  sessionStorage.setItem("email", email);
+  var email = document.getElementById("email").value;
+  if (email) {
+    // Aqui ficaria uma lógica que seria implementada com o backend
+    // Quando o usuário fizesse o login, seria encontrado o username que combine
+    // Com o email digitado, aí deixaria o username salvo no sessionStorage
+    // Isso porque o jogo usa o username para mostrar no ranking
+    // Por enquanto, só para teste, vou deixar um username fixo com base no email
+    var username = email.split("@")[0];
+    sessionStorage.setItem("username", username);
+  }
 }
