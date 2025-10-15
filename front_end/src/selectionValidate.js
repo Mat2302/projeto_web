@@ -1,6 +1,7 @@
 "use strict";
 
 document.addEventListener("DOMContentLoaded", () => {
+  dinamicLabel();
   const form = document.getElementById("formSelection");
 
   form.addEventListener("submit", (e) => {
@@ -19,4 +20,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
     window.location.href = "board-game.html";
   });
+
+  function dinamicLabel() {
+    const username = sessionStorage.getItem("username");
+    const label = document.querySelector(".welcome");
+    label.textContent = `Bem-vindo, ${username}!`;
+  }
 });
