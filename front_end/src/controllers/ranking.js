@@ -121,8 +121,8 @@ document.addEventListener("DOMContentLoaded", () => {
                     element.innerHTML = `
                         <h3>${position + 1}ª Lugar</h3>
                         <p>${player.jogador}</p>
-                        <p>${player.movimentos} movimentos</p>
-                        <p>${player.tempo} segundos</p>`;
+                        <p>${player.tempo} segundos</p>
+                        <p>${player.movimentos} movimentos</p>`;
                 }
                 
                 return;

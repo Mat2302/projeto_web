@@ -2,6 +2,13 @@
 
 document.addEventListener("DOMContentLoaded", () => {
   const headerContainer = document.querySelector(".header-container");
+  const username = sessionStorage.getItem("username");
+
+  if (!username) {
+    alert("Usuário não autenticado! Redirecionando para a página de login.");
+    window.location.href = "../index.html";
+    return;
+  }
 
   if (!headerContainer) {
     alert("A div 'header-container' não foi encontrada!");
@@ -19,9 +26,12 @@ document.addEventListener("DOMContentLoaded", () => {
       <a href="profile.html">Perfil</a>
     </nav>
     <div class="exit-header">
-      <a href="../index.html">Sair <img src="../../img/exit.svg" alt="Sair"></a>
+      <a href="../index.html" id="logout">Sair <img src="../../img/exit.svg" alt="Sair"></a>
     </div>
   `;
   headerContainer.appendChild(header);
   
+  document.getElementById("logout").addEventListener("click", () => {
+    sessionStorage.removeItem("username");
+  });
 });
