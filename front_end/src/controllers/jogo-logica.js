@@ -333,7 +333,8 @@
             movimentos: this.movimentos,
             pontuacao: this.paresEncontrados,
             tempo: tempo || 0,
-            data: new Date().toLocaleString()
+            data: new Date().toLocaleString(),
+            resultado: vitoria
         });
         localStorage.setItem("ranking", JSON.stringify(ranking));
     }

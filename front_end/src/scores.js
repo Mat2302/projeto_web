@@ -10,11 +10,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const gameType    = document.querySelectorAll(".mode-btn");
     const modoLinks   = document.querySelectorAll(".stats-item");
     const username    = sessionStorage.getItem("username") || "Anônimo";
-    console.log(username);
 
     let currentType = 0;
-    let firstLoad = true;
-    let alertShow = false;
     let currentMode = "2x2";
 
     function obtainScore(mode, scoreType) {
@@ -22,13 +19,9 @@ document.addEventListener("DOMContentLoaded", () => {
         
         if (scoreType == 1)
             players = players.filter(player => player.tempo > 0);
+        if (scoreType == 0)
+            players = players.filter(player => player.tempo == 0);
         players = players.filter(player => player.jogador === username);
-
-        if (players.length === 0 && !firstLoad && !alertShow) {
-            alert("Nenhum resultado encontrado para o user " + username + " nesse modo de jogo.");
-            alertShow = true;
-        }
-        firstLoad = false;
         updateTableBody(players);
     }
 
@@ -43,12 +36,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
             const row = document.createElement("tr");
             const typeText = currentType == 0 ? "Clássico" : "Com Tempo";
+            const resultText = player.resultado ? "Vitória" : "Derrota";
             row.innerHTML = `
                 <td>${player.data}</td>
                 <td>${typeText}</td>
                 <td>${player.tempo}</td>
                 <td>${player.movimentos}</td>
-                <td>Vitória</td>
+                <td>${resultText}</td>
             `; // Verificar como será a condição de vitória depois
             scoresBody.appendChild(row);
         });

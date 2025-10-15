@@ -20,6 +20,9 @@ document.addEventListener("DOMContentLoaded", () => {
         
         if (rankingType == 1)
             players = players.filter(player => player.tempo > 0);
+        if (rankingType == 0)
+            players = players.filter(player => player.tempo == 0);
+        players = players.filter(player => player.resultado === true);
 
         const bestScore = [];
         players.forEach(player => {
@@ -119,7 +122,7 @@ document.addEventListener("DOMContentLoaded", () => {
                         <h3>${position + 1}ª Lugar</h3>
                         <p>${player.jogador}</p>
                         <p>${player.movimentos} movimentos</p>
-                        <p>${player.tempo}</p>`;
+                        <p>${player.tempo} segundos</p>`;
                 }
                 
                 return;
