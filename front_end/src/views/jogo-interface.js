@@ -103,9 +103,15 @@ export class JogoView {
    * @param {HTMLElement} imgElement - Elemento HTML da imagem do card a ser atualizado.
    */
   atualizarCard(celula, imgElement) {
-    imgElement.src = celula.isVisivel()
-      ? celula.getCaminho()
-      : celula.getVerso();
+    if(celula.isVisivel()){
+        imgElement.src = celula.getCaminho();
+        imgElement.parentElement.style.backgroundColor = "#f0f0f0";
+    }
+    else {
+        imgElement.src = celula.getVerso();
+        imgElement.parentElement.style.backgroundColor = "#38A3A5";
+    }
+    
   }
 
   /**
