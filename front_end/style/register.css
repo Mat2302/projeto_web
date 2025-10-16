@@ -191,7 +191,7 @@
     top: 50%;
     width: 18px;
     height: 24px;
-    cursor: pointergi;
+    cursor: pointer;
     transform: translateY(-50%);
 }
 
