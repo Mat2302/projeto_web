@@ -65,7 +65,7 @@ document.addEventListener("DOMContentLoaded", () => {
     function updateTableHead(rankingType) {
         const timerBtn     = document.getElementById("timer-btn");
         const classicBtn   = document.getElementById("classic-btn");
-        const thead        = document.querySelector("table thead tr");
+        const thead        = document.querySelector("table thead");
 
         if (rankingType == 0) {
             classicBtn.classList.add("active");
