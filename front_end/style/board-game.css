@@ -18,18 +18,30 @@
 }
 
 .link-game {
+    font-size: 0.8rem;
     color: var(--text-color);
     text-decoration: none;
     transition: all 0.5s ease;
     background-color: var(--accent-color);
     padding: 1rem;
     border-radius: 0.8rem;
+    cursor: pointer;
 }
 
 .link-game:hover {
     background-color: var(--secondary-color);
     transition: all 0.5s ease;
 }
+
+.timer {
+    font-size: 0.8rem;
+    width: 90%;
+    text-decoration: none;
+    transition: all 0.5s ease;
+    padding: 1rem;
+    border-radius: 0.8rem;
+}
+
 
 .active {
     text-decoration: underline;

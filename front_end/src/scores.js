@@ -1,3 +1,5 @@
+"use strict";
+
 document.addEventListener("DOMContentLoaded", () => {
     const scoresData = JSON.parse(localStorage.getItem("ranking")) || {
         "2x2": [],
@@ -54,7 +56,6 @@ document.addEventListener("DOMContentLoaded", () => {
             modoLinks.forEach(l => l.classList.remove("active"));
             link.classList.add("active");
             currentMode = link.textContent.trim();
-            alertShow = false;
             obtainScore(currentMode, currentType);
         });
     });
@@ -64,7 +65,6 @@ document.addEventListener("DOMContentLoaded", () => {
             gameType.forEach(b => b.classList.remove("active"));
             button.classList.add("active");
             currentType = button.value;
-            alertShow = false;
             obtainScore(currentMode, currentType);
         });
     });

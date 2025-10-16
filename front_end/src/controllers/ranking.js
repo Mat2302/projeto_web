@@ -1,3 +1,5 @@
+"use strict";
+
 document.addEventListener("DOMContentLoaded", () => {
     const rankingData = JSON.parse(localStorage.getItem("ranking")) || {
         "2x2": [],

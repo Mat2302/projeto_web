@@ -1,7 +1,7 @@
 "use strict";
 
 document.addEventListener("DOMContentLoaded", () => {
-  const headerContainer = document.querySelector(".header-container");
+  const headerDiv = document.querySelector(".header-container");
   const username = sessionStorage.getItem("username");
 
   if (!username) {
@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", () => {
     return;
   }
 
-  if (!headerContainer) {
+  if (!headerDiv) {
     alert("A div 'header-container' não foi encontrada!");
     return;
   }
@@ -29,7 +29,7 @@ document.addEventListener("DOMContentLoaded", () => {
       <a href="../index.html" id="logout">Sair <img src="../../img/exit.svg" alt="Sair"></a>
     </div>
   `;
-  headerContainer.appendChild(header);
+  headerDiv.appendChild(header);
   
   document.getElementById("logout").addEventListener("click", () => {
     sessionStorage.removeItem("username");

@@ -9,17 +9,6 @@ document.addEventListener("DOMContentLoaded", () => {
       span: document.getElementById("alertUser"),
       message: "O usuário deve ser preenchido!",
     },
-    // email: {
-    //   input: document.getElementById("email"),
-    //   span: document.getElementById("alertEmail"),
-    //   message: "O email deve ser válido!",
-    // },
-
-    pssd: {
-      input: document.getElementById("pssd"),
-      span: document.getElementById("alertPssd"),
-      message: "A senha deve ser preenchida!",
-    },
   };
 
   Object.values(inputs).forEach(({ input, span, message }) => {
@@ -53,21 +42,6 @@ function validateInput(input, span, message) {
       regex = /^[A-Za-z0-9._]{3,20}$/;
       if (!regex.test(values)) {
         message = "O username deve ter entre 3 e 20 caracteres, sem espaços!";
-        validate = false;
-      }
-      break;
-    // case "email":
-    //   regex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-    //   if (!regex.test(values)) {
-    //     message = "Email inválido!";
-    //     validate = false;
-    //   }
-    //   break;
-    case "pssd":
-      regex = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[!@#$%&*])[A-Za-z\d!@#$%&*]{8,}$/;
-      if (!regex.test(values)) {
-        message =
-          "A senha deve conter ao menos 8 caracteres, com letras e números!";
         validate = false;
       }
       break;

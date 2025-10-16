@@ -103,15 +103,13 @@ export class JogoView {
    * @param {HTMLElement} imgElement - Elemento HTML da imagem do card a ser atualizado.
    */
   atualizarCard(celula, imgElement) {
-    if(celula.isVisivel()){
-        imgElement.src = celula.getCaminho();
-        imgElement.parentElement.style.backgroundColor = "#f0f0f0";
+    if (celula.isVisivel()) {
+      imgElement.src = celula.getCaminho();
+      imgElement.parentElement.style.backgroundColor = "#f0f0f0";
+    } else {
+      imgElement.src = celula.getVerso();
+      imgElement.parentElement.style.backgroundColor = "#38A3A5";
     }
-    else {
-        imgElement.src = celula.getVerso();
-        imgElement.parentElement.style.backgroundColor = "#38A3A5";
-    }
-    
   }
 
   /**
@@ -119,7 +117,7 @@ export class JogoView {
    * @param {number} movimentos - Número de movimentos realizados pelo jogador.
    * @param {boolean} usarTimer - Indica se o modo de jogo com timer está ativo. Se true, exibe o timer; caso contrário, oculta-o.
    */
-  atualizarStatus(movimentos, usarTimer) {
+  atualizarStatus(movimentos, usarTimer, tempoLimite) {
     document.getElementById("movimentos").textContent =
       "Movimentos: " + movimentos;
 
@@ -128,7 +126,7 @@ export class JogoView {
       document.getElementById("tempo-wrapper").style.display = "inline";
 
       if (!this.tempoElement) {
-        this.criarTimer();
+        this.criarTimer(tempoLimite);
       }
     } else {
       document.getElementById("modo").textContent = "Clássico";
@@ -156,60 +154,63 @@ export class JogoView {
    * @param {number} [tempo] - Tempo decorrido em segundos (opcional).
    * @details A mensagem inclui o número de movimentos e, se fornecido, o tempo decorrido formatado em minutos e segundos.
    */
-  mostrarMensagemFinal({movimentos = 0, tempo = null, vitoria = null, tempoLimite = null} = {}) {
-    
+  mostrarMensagemFinal({
+    movimentos = 0,
+    tempo = null,
+    vitoria = null,
+    tempoLimite = null,
+  } = {}) {
     const minutos = Math.floor(tempo / 60);
     const segundos = tempo % 60;
 
+    let jogarNovamente;
+    let mensagem;
     if (vitoria === true) {
+      mensagem = `Parabéns! Você encontrou todos os pares em ${movimentos} movimentos`;
 
-    let mensagem = `Parabéns! Você encontrou todos os pares em ${movimentos} movimentos`;
-
-    if (tempo !== null && tempo !== undefined) {
-      
-
-      if (minutos > 0) {
-        mensagem += ` e ${minutos} ${minutos === 1 ? "minuto" : "minutos"}`;
-        if (segundos > 0) {
+      if (tempo !== null && tempo !== undefined) {
+        if (minutos > 0) {
+          mensagem += ` e ${minutos} ${minutos === 1 ? "minuto" : "minutos"}`;
+          if (segundos > 0) {
+            mensagem += ` e ${segundos} ${
+              segundos === 1 ? "segundo" : "segundos"
+            }`;
+          }
+        } else {
           mensagem += ` e ${segundos} ${
             segundos === 1 ? "segundo" : "segundos"
           }`;
         }
-      } else {
-        mensagem += ` e ${segundos} ${segundos === 1 ? "segundo" : "segundos"}`;
-      }
-    }
-
-    mensagem += "!";
-    alert(mensagem);
-
-}
-
-    else if (vitoria === false) {
-
-    let mensagem = `Tempo esgotado! Você não conseguiu encontrar todos os pares a tempo (${minutos}:${segundos}). Você fez ${movimentos} movimentos`;
-    alert(mensagem);
-    }
-
-    else if (vitoria === null || vitoria === undefined) {
-
-    let mensagem = `O jogo terminou! Você fez ${movimentos} movimentos`;
-    alert(mensagem);
       }
 
-    const jogarNovamente = confirm("Deseja jogar novamente?");
-  if (jogarNovamente) {
-    this.reiniciar();
-  } else {
-    window.location.href = "scores.html";
-  }
+      mensagem += "!";
+    } else if (vitoria === false) {
+      mensagem = `Tempo esgotado! Você não conseguiu encontrar todos os pares a tempo (${minutos}:${segundos}). Você fez ${movimentos} movimentos`;
+    } else if (vitoria === null || vitoria === undefined) {
+      mensagem = `O jogo terminou! Você fez ${movimentos} movimentos`;
+    }
+
+    jogarNovamente = confirm(mensagem + " Deseja jogar novamente?");
+    if (jogarNovamente) {
+      this.reiniciar();
+    } else {
+      window.location.href = "scores.html";
+    }
   }
 
   /**
    * @brief Cria o elemento de timer na interface.
    * @returns {HTMLElement} Elemento HTML do timer criado.
    */
-  criarTimer() {
+  criarTimer(tempoLimite) {
+    const minutes = Math.floor(tempoLimite / 60);
+    const seconds = tempoLimite % 60;
+    const formattedTime = `${minutes}:${seconds.toString().padStart(2, "0")}`;
+    var timer = document.querySelector(".timer");
+    timer.style.backgroundColor = "#5C3DD9";
+    timer.style.color = "#FFFFFF";
+    let mensagem = `Limite: ${formattedTime}`;
+    timer.innerHTML = mensagem;
     this.tempoElement = document.createElement("span");
     this.tempoElement.id = "tempo-decorrido";
     this.tempoElement.textContent = "0:00";
@@ -221,4 +222,3 @@ export class JogoView {
     return this.tempoElement;
   }
 }
-
