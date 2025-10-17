@@ -6,60 +6,34 @@
     <title>Memory Overflow - Jogo</title>
     <link rel="stylesheet" href="../style/style.css">
     <link rel="stylesheet" href="../style/board-game.css">
+    <script type="module" src="../src/main.js"></script>
 </head>
 
 <body>
-    <section>
-        <div class="leave"><a href="selection.html"><img src="../../img/close.svg" alt="Sair" class="btn-leave"></a>
+    <div>
+        <div class="leave"><a onClick="window.sair()"><img src="../../img/close.svg" alt="Sair" class="btn-leave"></a>
         </div>
         <div class="wrap-game">
-            <h2 class="h2-game">Tabuleiro 4x4</h2>
             <div class="label-game">
+                <span class="timer"></span>
                 <div class="game-mode">
-                    <p>Clássico | Score: 4</p>
+                    <p id="status-jogo">
+                        <span id="modo"></span> |
+                        <span id="movimentos"></span>
+                        <span id="tempo-wrapper"><span id="tempo-decorrido"></span></span>
+                    </p>
                 </div>
-                <a href="board-game-cheat.html" class="link-game">Modo trapaça</a>
+                <a class="link-game" onclick="window.jogo.modoTrapaca()">Modo
+                    trapaça</a>
             </div>
 
-            <div class="game flip">
-                <div class="cards"><img src="../../img/game-board/robot-card.svg" alt="Robô card" class="img-cards">
-                </div>
-                <div class="cards"><img src="../../img/game-board/robot-card.svg" alt="Robô card" class="img-cards">
-                </div>
-                <div class="cards"><img src="../../img/game-board/robot-card.svg" alt="Robô card" class="img-cards">
-                </div>
-                <div class="cards"><img src="../../img/game-board/robot-card.svg" alt="Robô card" class="img-cards">
-                </div>
-                <div class="cards"><img src="../../img/game-board/robot-card.svg" alt="Robô card" class="img-cards">
-                </div>
-                <div class="cards"><img src="../../img/game-board/robot-card.svg" alt="Robô card" class="img-cards">
-                </div>
-                <div class="cards"><img src="../../img/game-board/robot-card.svg" alt="Robô card" class="img-cards">
-                </div>
-                <div class="cards"><img src="../../img/game-board/robot-card.svg" alt="Robô card" class="img-cards">
-                </div>
-                <div class="cards"><img src="../../img/game-board/robot-card.svg" alt="Robô card" class="img-cards">
-                </div>
-                <div class="cards"><img src="../../img/game-board/robot-card.svg" alt="Robô card" class="img-cards">
-                </div>
-                <div class="cards"><img src="../../img/game-board/robot-card.svg" alt="Robô card" class="img-cards">
-                </div>
-                <div class="cards"><img src="../../img/game-board/robot-card.svg" alt="Robô card" class="img-cards">
-                </div>
-                <div class="cards"><img src="../../img/game-board/robot-card.svg" alt="Robô card" class="img-cards">
-                </div>
-                <div class="cards"><img src="../../img/game-board/robot-card.svg" alt="Robô card" class="img-cards">
-                </div>
-                <div class="cards"><img src="../../img/game-board/robot-card.svg" alt="Robô card" class="img-cards">
-                </div>
-                <div class="cards"><img src="../../img/game-board/robot-card.svg" alt="Robô card" class="img-cards">
-                </div>
+            <div class="game flip" id="cardColor">
             </div>
         </div>
 
         <img src="../../img/wave-game.svg" alt="Onda" class="background-wave-image">
         <img src="../../img/robot-game.svg" alt="Robô jogo" class="robot-game">
-    </section>
+    </div>
 
 </body>
 

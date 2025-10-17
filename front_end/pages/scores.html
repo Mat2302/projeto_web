@@ -12,23 +12,12 @@
 </head>
 
 <body>
-  <header>
-    <h1 class="title-header">Memory Overflow</h1>
-    <nav class="nav-header">
-      <a href="selection.html">Jogar</a>
-      <a href="ranking.html">Ranking</a>
-      <a href="scores.html">Scores</a>
-      <a href="profile.html">Perfil</a>
-    </nav>
-    <div class="exit-header">
-      <a href="../index.html">Sair <img src="../../img/exit.svg" alt="Sair"></a>
-    </div>
-  </header>
+  <div class="header-container"></div>
 
   <div class="main">
     <nav class="stats-nav">
       <div class="nav-label">Modos de Jogo</div>
-      <a href="#" class="stats-item">2x2</a>
+      <a href="#" class="stats-item active">2x2</a>
       <a href="#" class="stats-item">4x4</a>
       <a href="#" class="stats-item">6x6</a>
       <a href="#" class="stats-item">8x8</a>
@@ -41,35 +30,19 @@
           <tr>
             <th>Data</th>
             <th>Modo</th>
-            <th>Grade</th>
             <th>Tempo</th>
             <th>Movimentos</th>
             <th>Resultado</th>
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>30/08/2025</td>
-            <td>Clássico</td>
-            <td>4x4</td>
-            <td>2:15</td>
-            <td>32</td>
-            <td>Vitória</td>
-          </tr>
-          <tr>
-            <td>29/08/2025</td>
-            <td>Clássico</td>
-            <td>6x6</td>
-            <td>5:00</td>
-            <td>70</td>
-            <td>Derrota</td>
-          </tr>
+          <!-- Texto preenchido automaticamente-->
         </tbody>
       </table>
 
       <div class="mode-switch">
-        <button class="mode-btn active">Clássico</button>
-        <button class="mode-btn">Com Tempo</button>
+        <button id="classic-btn" class="mode-btn active" value="0">Clássico</button>
+        <button id="timer-btn" class="mode-btn" value="1">Com Tempo</button>
       </div>
     </section>
 
@@ -77,6 +50,9 @@
       <img src="../../img/wave-board.svg" alt="Wave background">
     </div>
   </div>
+
+  <script src="../src/header.js"></script>
+  <script src="../src/scores.js"></script>
 </body>
 
 </html>

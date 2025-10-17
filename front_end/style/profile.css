@@ -7,7 +7,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 2rem;
+    gap: 6rem;
     color: #fff;
     z-index: 0;
     top: 0;
@@ -22,7 +22,14 @@ h2 {
     display: flex;
     flex-direction: column;
     padding: 1rem;
-    margin-top: 10rem;
+    margin-top: 6rem;
+    transform: translateX(-5rem);
+}
+
+.line-data {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
 }
 
 .profile-img {
@@ -44,75 +51,27 @@ h2 {
     object-fit: contain;
 }
 
-.name {
-    margin: 0;
-    font-size: 1.8rem;
-    font-weight: 900;
-    background-color: transparent;
-    border: none;
-    color: #FFF;
-    padding: 0.5rem;
+.name,
+.tel,
+.email {
+    text-decoration: underline;
 }
 
 .username,
-.email,
-.edit-profile {
+.birth,
+.cpf,
+.name,
+.tel,
+.email {
     margin: 0;
     font-size: 1rem;
     background-color: transparent;
     border: none;
-    color: #FFF;
+    color: var(--text-color);
     padding: 0.5rem;
 }
 
 .edit-profile {
-    text-decoration: none;
-    transition: all 0.5s ease;
-    display: flex;
-    justify-content: flex-end;
-}
-
-.edit-profile:hover {
-    text-shadow: 2px 4px 8px rgba(56, 163, 165, 1);
-    transition: all 0.5s ease;
-}
-
-
-.profile-stats {
-    display: flex;
-    gap: 2rem;
-    margin-top: -3rem;
-    justify-content: center;
-    margin-left: 40vmin;
-}
-
-.stat {
-    margin-top: 2rem;
-    background-color: var(--secondary-color);
-    width: 10vw;
-    height: 20vh;
-    z-index: 10;
-    border-radius: 50%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    color: #FFF;
-    gap: 0;
-}
-
-.stat-label {
-    font-size: 1rem;
-    text-align: center;
-}
-
-.stat-value {
-    font-size: 2rem;
-    text-align: center;
-}
-
-.stat-label,
-.stat-value {
-    margin: 3px;
-    line-height: 1.1;
+    width:1rem;
+    position: relative;
 }

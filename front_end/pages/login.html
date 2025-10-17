@@ -24,19 +24,25 @@
             </div>
 
             <div class="box-input">
-                <label class="label-input">
-                    <img src="../../img/icon_email.svg" class="img-icon-label" alt="ícone do Email">
-                    <input type="email" class="input-login" placeholder="E-mail">
-                </label>
+                <form action="selection.html" name="registerForm" id="registerForm">
+                    <label class="label-input">
+                        <img src="../../img/icon_star.svg" class="img-icon-label" alt="Ícone do username">
+                        <input type="text" class="input-login" placeholder="Username" id="username">
+                    </label>
 
-                <label class="label-input">
-                    <img src="../../img/icon_lock.svg" class="img-icon-label" alt="ícone da Senha">
-                    <input type="password" class="input-login" placeholder="Senha">
-                    <img src="../../img/icon_eye.svg" class="img-icon-pass" alt="ícone do olho">
-                </label>
+                    <span id="alertUser"></span>
 
+                    <label class="label-input">
+                        <img src="../../img/icon_lock.svg" class="img-icon-label" alt="Ícone da senha">
+                        <input type="password" id="pssd" class="input-register" placeholder="Senha">
+                        <img src="../../img/icon_eye.svg" id="eyeLock" class="img-icon-pass" alt="Ícone do olho"
+                            onclick='switchType("pssd")'>
+                    </label>
+                    <span id="alertPssd"></span>
 
-                <a href="selection.html" class="submit-login">Entrar</a>
+                    <input type="submit" value="Entrar" class="submit-login">
+                </form>
+
 
                 <div class="register-log">
                     <label>Não tem conta?</label>
@@ -45,6 +51,8 @@
             </div>
         </div>
     </section>
+    <script src="../src/validateLogin.js"></script>
+    <script src="../src/eyeLock.js"></script>
 </body>
 
 </html>

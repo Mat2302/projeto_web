@@ -9,18 +9,7 @@
 </head>
 
 <body>
-    <header>
-        <h1 class="title-header">Memory Overflow</h1>
-        <nav class="nav-header">
-            <a href="selection.html">Jogar</a>
-            <a href="ranking.html">Ranking</a>
-            <a href="scores.html">Scores</a>
-            <a href="profile.html">Perfil</a>
-        </nav>
-        <div class="exit-header">
-            <a href="../index.html">Sair <img src="../../img/exit.svg" alt="Sair"></a>
-        </div>
-    </header>
+    <div class="header-container"></div>
 
     <section>
         <div class="profile-header">
@@ -30,30 +19,18 @@
 
             <div class="profile-info">
                 <h2>Meus dados:</h2>
-                <input type="text" class="name" value="Laura Rodrigues Russo">
-                <input type="text" class="username" value="laurarusso">
-                <input type="text" class="email" value="lauurussoo@gmail.com">
-                <a href="#" class="edit-profile">editar&nbsp;<img src="../../img/edit.svg" alt="Editar"></a>
-            </div>
-        </div>
-
-        <div class="profile-stats">
-            <div class="stat">
-                <p class="stat-label">Ranking global</p>
-                <p class="stat-value">1º</p>
-            </div>
-
-            <div class="stat">
-                <p class="stat-label">Melhor tempo</p>
-                <p class="stat-value">1:45</p>
-            </div>
-
-            <div class="stat">
-                <p class="stat-label">Score pessoal</p>
-                <p class="stat-value">10</p>
+                <div class="line-data"><input type="text" class="name" value="Laura Rodrigues Russo" readonly><img src="../../img/edit.svg" alt="Editar" class="edit-profile"></div>
+                <div class="line-data"><input type="text" class="email" value="lauurussoo@gmail.com" readonly><img src="../../img/edit.svg" alt="Editar" class="edit-profile"></div>
+                <div class="line-data"><input type="text" class="tel" value="14991614543" readonly><img src="../../img/edit.svg" alt="Editar" class="edit-profile"></div>
+                <input type="text" class="username" value="laurarusso" readonly>
+                <input type="text" class="birth" value="10/12/2004" readonly>
+                <input type="text" class="cpf" value="51359026860" readonly>
             </div>
         </div>
     </section>
+
+    <script src="../src/profile.js"></script>
+    <script src="../src/header.js"></script>
 </body>
 
 </html>
