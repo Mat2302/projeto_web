@@ -1,5 +1,6 @@
 "use strict";
 
+// Implementar o thead dinamico com base no modo de jogo selecionado (com tempo / clássico)
 document.addEventListener("DOMContentLoaded", () => {
     const scoresData = JSON.parse(localStorage.getItem("ranking")) || {
         "2x2": [],
@@ -11,13 +12,37 @@ document.addEventListener("DOMContentLoaded", () => {
     const scoresBody = document.querySelector("table tbody");
     const gameType    = document.querySelectorAll(".mode-btn");
     const modoLinks   = document.querySelectorAll(".stats-item");
-    const username    = sessionStorage.getItem("username") || "Anônimo";
+    const idJogador    = sessionStorage.getItem("username") || "Anônimo";
 
     let currentType = 0;
     let currentMode = "2x2";
 
-    function obtainScore(mode, scoreType) {
-        let players = scoresData[mode] || [];
+    function obtainScore(gameSize, scoreType) {
+        let players = scoresData[gameSize] || [];
+        let xhttp = new XMLHttpRequest();
+
+        if (!xhttp) {
+            alert("Erro ao criar objeto XMLHttpRequest.");
+            return;
+        }
+
+        // Alterar identificação do usuário (username -> id_jogador)
+        // xhttp.open("GET", "../../back_end/score/scores.php?size="+encodeURIComponent(gameSize)+"&type="+encodeURIComponent(scoreType)+"&id_jogador="+encodeURIComponent(idJogador), true);
+        // xhttp.onreadystatechange = function() {
+        //     if (xhttp.readyState === 4 && xhttp.status === 200) {
+        //         try {
+        //             const response = JSON.parse(xhttp.responseText);
+        //             if (!response.success) {
+        //                 console.error("Erro na resposta do servidor:", response.error);
+        //                 return;
+        //             }
+        //             updateTableBody(response.data);
+        //         } catch (e) {
+        //             console.error("Erro ao analisar o JSON:", e);
+        //         }
+        //     }
+        // };
+        // xhttp.send();
         
         if (scoreType == 1)
             players = players.filter(player => player.tempo > 0);
@@ -45,7 +70,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 <td>${player.tempo}</td>
                 <td>${player.movimentos}</td>
                 <td>${resultText}</td>
-            `; // Verificar como será a condição de vitória depois
+            `;
             scoresBody.appendChild(row);
         });
     }
