@@ -1,65 +1,38 @@
 "use strict";
 
 document.addEventListener("DOMContentLoaded", () => {
-    const rankingData = JSON.parse(localStorage.getItem("ranking")) || {
-        "2x2": [],
-        "4x4": [],
-        "6x6": [],
-        "8x8": []
-    };
-
     const gameType    = document.querySelectorAll(".mode-btn");
     const rankingBody = document.querySelector("table tbody");
     const modoLinks   = document.querySelectorAll(".stats-item");
-    const podium      = document.querySelectorAll(".podium-card .text");
 
     let currentType = 0;
-    let currentMode = "2x2";
+    let currentMode = "2";
 
     function obtainRanking(mode, rankingType) {
         updateTableHead(rankingType);
-        let players = rankingData[mode] || [];
-        
-        if (rankingType == 1)
-            players = players.filter(player => player.tempo > 0);
-        if (rankingType == 0)
-            players = players.filter(player => player.tempo == 0);
-        players = players.filter(player => player.resultado === true);
+        let xhttp = new XMLHttpRequest();
 
-        const bestScore = [];
-        players.forEach(player => {
-            const exists = bestScore.find(p => p.jogador === player.jogador);    
-            if (!exists) {
-                bestScore.push(player);
-                return;
-            }
-
-            const changeTimeMode =
-                (rankingType == 0 && player.movimentos < exists.movimentos) ||
-                (rankingType == 1 && player.tempo < exists.tempo);
-            if (changeTimeMode) {
-                const index = bestScore.indexOf(exists);
-                bestScore[index] = player;
-            }
-        });
-
-        if (rankingType == 0) {
-            bestScore.sort((a, b) => {
-                if (a.movimentos !== b.movimentos)
-                    return a.movimentos - b.movimentos;
-                return b.pontuacao - a.pontuacao;
-            });
+        if (!xhttp) {
+            alert("Erro ao criar objeto XMLHttpRequest.");
+            return;
         }
 
-        if (rankingType == 1) {
-            bestScore.sort((a, b) => {
-                if (a.tempo !== b.tempo)
-                    return a.tempo - b.tempo;
-                return a.movimentos - b.movimentos;
-            });
-        }
-
-        updateTableBody(bestScore);
+        xhttp.open("GET", "../../back_end/score/ranking.php?game_mode="+encodeURIComponent(rankingType)+"&game_size="+encodeURIComponent(mode), true);
+        xhttp.onreadystatechange = function() {
+            if (xhttp.readyState === 4 && xhttp.status === 200) {
+                try {
+                    const response = JSON.parse(xhttp.responseText);
+                    if (!response.success) {
+                        console.error("Erro na resposta do servidor: ", response.error);
+                        return;
+                    }
+                    updateTableBody(response.data);
+                } catch (e) {
+                    console.error("Erro ao analisar o JSON: ", e)
+                }
+            }
+        };
+        xhttp.send();
     }
 
     function updateTableHead(rankingType) {
@@ -89,64 +62,61 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     function updateTableBody(bestScore) {
-        const positions = {first: 0, second: 1, third: 2};
-        
-        podium.forEach((element) => {
-            let podiumPosition;
-            switch (true) {
-                case element.parentElement.classList.contains("first"):
-                    podiumPosition = "first";
-                    break;
-                case element.parentElement.classList.contains("second"):
-                    podiumPosition = "second";
-                    break;
-                case element.parentElement.classList.contains("third"):
-                    podiumPosition = "third";
-                    break;
-                default:
-                    podiumPosition = "third";
-            }
+        const rankingPodium = bestScore.slice(0, 3);
+        const rankingOthers = bestScore.slice(3);
 
-            const position = positions[podiumPosition];
-            const player = bestScore[position];
+        const podiumMap = {
+            0: document.querySelector(".podium-card.first .text"),
+            1: document.querySelector(".podium-card.second .text"),
+            2: document.querySelector(".podium-card.third .text"),
+        };
+        
+        Object.entries(podiumMap).forEach(([index, card]) => {
+            const player = rankingPodium[index];
 
             if (player) {
                 if (currentType == 0) {
-                    element.innerHTML = `
-                        <h3>${position + 1}ª Lugar</h3>
-                        <p>${player.jogador}</p>
-                        <p>${player.movimentos} movimentos</p>
+                    card.innerHTML = `
+                        <h3>${parseInt(index) + 1}ª Lugar</h3>
+                        <p>${player.usuario}</p>
+                        <p>${player.quantidade_movimentos} movimentos</p>
                         <p>${player.pontuacao} pontos</p>`;
                 }
 
                 if (currentType == 1) {
-                    element.innerHTML = `
-                        <h3>${position + 1}ª Lugar</h3>
-                        <p>${player.jogador}</p>
-                        <p>${player.tempo} segundos</p>
-                        <p>${player.movimentos} movimentos</p>`;
+                    card.innerHTML = `
+                        <h3>${parseInt(index) + 1}ª Lugar</h3>
+                        <p>${player.usuario}</p>
+                        <p>${player.tempo_segundos} segundos</p>
+                        <p>${player.quantidade_movimentos} movimentos</p>`;
                 }
-                
-                return;
+            } else {
+                card.innerHTML = `
+                    <h3>${parseInt(index) + 1}ª Lugar</h3>
+                    <p>--</p>
+                    <p>--</p>
+                    <p>--</p>`;
             }
-            element.innerHTML = `
-                <h3>${position + 1}ª Lugar</h3>
-                <p>--</p>
-                <p>--</p>
-                <p>--</p>`;
         });
 
         rankingBody.innerHTML = "";
-        bestScore.slice(3).forEach((element, index) => {
-            if (!element)
-                return;
-
+        rankingOthers.forEach((player, index) => {
             const row = document.createElement("tr");
-            row.innerHTML = `
-                <td>${index + 4}º</td>
-                <td>${element.jogador}</td>
-                <td>${element.movimentos}</td>
-                <td>${element.pontuacao}</td>`;
+            if (currentType == 0) {
+                row.innerHTML = `
+                    <td>${index + 4}º</td>
+                    <td>${player.usuario}</td>
+                    <td>${player.quantidade_movimentos}</td>
+                    <td>${player.pontuacao}</td>`;
+            }
+
+            if (currentType == 1) {
+                row.innerHTML = `
+                    <td>${index + 4}º</td>
+                    <td>${player.usuario}</td>
+                    <td>${player.quantidade_movimentos}</td>
+                    <td>${player.tempo_segundos} segundos</td>`;
+            }
             rankingBody.appendChild(row);
         });
     }
@@ -156,7 +126,7 @@ document.addEventListener("DOMContentLoaded", () => {
             event.preventDefault();
             modoLinks.forEach(l => l.classList.remove("active"));
             link.classList.add("active");
-            currentMode = link.textContent.trim();
+            currentMode = formatGameSize(link.textContent.trim());
             obtainRanking(currentMode, currentType);
         });
     });
@@ -169,6 +139,16 @@ document.addEventListener("DOMContentLoaded", () => {
             obtainRanking(currentMode, currentType);
         });
     });
+
+    function formatGameSize(size) {
+        switch(size) {
+            case "2x2": return "2";
+            case "4x4": return "4";
+            case "6x6": return "6";
+            case "8x8": return "8";
+            default: return "2";
+        }
+    }
 
     obtainRanking(currentMode, currentType);
 });

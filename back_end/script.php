@@ -17,6 +17,7 @@
             id_jogador INT NOT NULL,
             tamanho_tabuleiro INT NOT NULL,
             quantidade_movimentos INT NOT NULL,
+            pontuacao INT NOT NULL,
             modo_jogo BOOLEAN NOT NULL,
             tempo_segundos INT,
             resultado BOOLEAN NOT NULL,

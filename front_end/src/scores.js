@@ -12,7 +12,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function obtainScore(gameSize, scoreType) {
         let xhttp = new XMLHttpRequest();
-        console.log(gameSize, scoreType);
 
         if (!xhttp) {
             alert("Erro ao criar objeto XMLHttpRequest.");
@@ -25,12 +24,12 @@ document.addEventListener("DOMContentLoaded", () => {
                 try {
                     const response = JSON.parse(xhttp.responseText);
                     if (!response.success) {
-                        console.error("Erro na resposta do servidor:", response.error);
+                        console.error("Erro na resposta do servidor: ", response.error);
                         return;
                     }
                     updateTableBody(response.data);
                 } catch (e) {
-                    console.error("Erro ao analisar o JSON:", e);
+                    console.error("Erro ao analisar o JSON: ", e);
                 }
             }
         };
