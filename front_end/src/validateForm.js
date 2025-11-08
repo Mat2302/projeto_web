@@ -5,8 +5,6 @@
 
 "use strict";
 
-var isValid = false;
-
 document.addEventListener("DOMContentLoaded", () => {
   var form = document.getElementById("registerForm");
 
@@ -52,12 +50,6 @@ document.addEventListener("DOMContentLoaded", () => {
       span: document.getElementById("alertPssd"),
       message: "A senha deve ser preenchida!",
     },
-
-    file: {
-      input: document.getElementById("photo"),
-      span: document.getElementById("alertFile"),
-      message: "A foto deve ser inserida!",
-    },
   };
 
   Object.values(inputs).forEach(({ input, span, message }) => {
@@ -73,13 +65,8 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
 
-    if (!validate || !isValid) {
+    if (!validate) {
       e.preventDefault();
-      if (!isValid) {
-        var photoAlert = document.getElementById("alertFile");
-        photoAlert.innerHTML = `<img src="../../img/danger.png" class="img-icon-alert"/> A imagem deve ter 1x1 (quadrada)!`;
-        document.getElementById("photo").style.borderColor = "#d00000";
-      }
       return;
     }
     saveLogin();
@@ -145,42 +132,17 @@ function validateInput(input, span, message) {
         validate = false;
       }
       break;
-
-    case "photo":
-      var file = input.files[0];
-      if (!file) {
-        message = "Selecione uma imagem!";
-        validate = false;
-        isValid = false;
-      } else {
-        var img = new Image();
-        img.src = URL.createObjectURL(file);
-        img.onload = () => {
-          if (img.width != img.height) {
-            span.innerHTML = `<img src="../../img/danger.png" class="img-icon-alert"/> A imagem deve ter 1x1 (quadrada)!`;
-            input.style.borderColor = "d00000";
-            isValid = false;
-          } else {
-            span.innerHTML = "";
-            input.style.borderColor = "#b5e48c";
-            isValid = true;
-          }
-        };
-      }
-      break;
   }
 
-  if (!validate || values == "") {
+  if (!validate) {
     span.innerHTML = `<img src="../../img/danger.png" class="img-icon-alert" alt="Ícone de alerta"/> ${message}`;
     input.style.borderColor = "#d00000";
     return false;
-  } else if (input.id !== "photo") {
+  } else {
     span.innerHTML = "";
     input.style.borderColor = "#b5e48c";
     return true;
   }
-
-  return true;
 }
 
 function validateDate(date) {
@@ -211,6 +173,50 @@ function validateDate(date) {
 }
 
 function saveLogin() {
-  const username = document.getElementById("username").value;
-  sessionStorage.setItem("username", username);
+  const info_cadastro = new FormData();
+  info_cadastro.append("name", document.getElementById("name").value);
+  info_cadastro.append("username", document.getElementById("username").value);
+  info_cadastro.append("email", document.getElementById("email").value);
+  info_cadastro.append("birth",formataData(document.getElementById("birth").value));
+  info_cadastro.append("telephone", document.getElementById("telephone").value);
+  info_cadastro.append("cpf", document.getElementById("cpf").value);
+  info_cadastro.append("pssd", document.getElementById("pssd").value);
+
+  sessionStorage.setItem("username", document.getElementById("username").value);
+
+  let xhttp = new XMLHttpRequest();
+
+  if (!xhttp) {
+    alert("Erro ao criar objeto XMLHttpRequest.");
+    return;
+  }
+
+  xhttp.open(
+    "POST",
+    "../../back_end/login/register.php?",
+
+    true
+  );
+  xhttp.onreadystatechange = function () {
+    if (xhttp.readyState === 4 && xhttp.status === 200) {
+      try {
+        const response = JSON.parse(xhttp.responseText);
+        console.log(response);
+        if (!response.success) {
+          alert("Erro na resposta do servidor: ", response.error);
+          return;
+        }
+        alert(response.data)
+        window.location.href = 'selection.html';
+      } catch (e) {
+        console.error("Erro ao analisar o JSON: ", e);
+      }
+    }
+  };
+  xhttp.send(info_cadastro);
+}
+
+function formataData(data) {
+  const [dia, mes, ano] = data.split("/");
+  return `${ano}-${mes}-${dia}`;
 }
