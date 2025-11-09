@@ -4,8 +4,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const scoresBody = document.querySelector("table tbody");
     const gameType    = document.querySelectorAll(".mode-btn");
     const modoLinks   = document.querySelectorAll(".stats-item");
-    const username    = sessionStorage.getItem("username") || "Anônimo";
-    const idJogador   = 1; // Temporário, substituir depois pela variável correta
+    const username    = sessionStorage.getItem("username");
+    const idJogador   = sessionStorage.getItem("idJogador");
 
     let currentType = 0;
     let currentMode = "2";

@@ -57,6 +57,7 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   form.addEventListener("submit", (e) => {
+    e.preventDefault();
     var validate = true;
 
     Object.values(inputs).forEach(({ input, span, message }) => {
@@ -182,8 +183,6 @@ function saveLogin() {
   info_cadastro.append("cpf", document.getElementById("cpf").value);
   info_cadastro.append("pssd", document.getElementById("pssd").value);
 
-  sessionStorage.setItem("username", document.getElementById("username").value);
-
   let xhttp = new XMLHttpRequest();
 
   if (!xhttp) {
@@ -191,22 +190,15 @@ function saveLogin() {
     return;
   }
 
-  xhttp.open(
-    "POST",
-    "../../back_end/login/register.php?",
-
-    true
-  );
+  xhttp.open("POST", "../../back_end/login/register.php", true);
   xhttp.onreadystatechange = function () {
     if (xhttp.readyState === 4 && xhttp.status === 200) {
       try {
         const response = JSON.parse(xhttp.responseText);
-        console.log(response);
         if (!response.success) {
-          alert("Erro na resposta do servidor: ", response.error);
+          alert("Erro na resposta do servidor: " + response.data);
           return;
         }
-        // alert(response.data)
         window.location.href = '../pages/selection.html';
       } catch (e) {
         console.error("Erro ao analisar o JSON: ", e);

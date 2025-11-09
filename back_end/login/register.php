@@ -1,5 +1,6 @@
 <?php
 header('Content-Type: application/json');
+session_start();
 try {
     include('../connect.php');
     $name = isset($_POST['name']) ? ($_POST['name']) : null;
@@ -20,15 +21,22 @@ try {
     ];
 
     $stmt = $pdo->prepare($sql->queryData);
-    $stmt->execute($sql->binds);
-
-    echo json_encode([
-        'success' => true,
-        'data' => 'Jogador cadastrado com sucesso!'
-    ]);
+    
+    if ($stmt->execute($sql->binds)) {
+        $_SESSION['username'] = $username;
+        echo json_encode([
+            'success' => true,
+            'data' => 'Jogador cadastrado com sucesso!'
+        ]);
+    } else {
+        echo json_encode([
+            'success' => false,
+            'data' => 'Erro ao cadastrar o jogador.'
+        ]);
+    }
 } catch (PDOException $e) {
     echo json_encode([
         'success' => false,
-        'error' => 'Erro ao realizar a busca: ' . $e->getMessage()
+        'data' => 'Erro ao cadastrar o jogador: ' . $e->getMessage()
     ]);
 }

@@ -16,6 +16,7 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   form.addEventListener("submit", (e) => {
+    e.preventDefault();
     var validate = true;
 
     Object.values(inputs).forEach(({ input, span, message }) => {
@@ -59,6 +60,34 @@ function validateInput(input, span, message) {
 }
 
 function saveLogin() {
-  const username = document.getElementById("username").value;
-  sessionStorage.setItem("username", username);
+  const info_login = new FormData();
+  info_login.append("username", document.getElementById("username").value);
+  info_login.append("pssd", document.getElementById("pssd").value);
+
+  let xhttp = new XMLHttpRequest();
+
+  if (!xhttp) {
+    alert("Erro ao criar objeto XMLHttpRequest.");
+    return;
+  }
+
+  xhttp.open("POST", "../../back_end/login/login.php", true);
+  xhttp.onreadystatechange = function () {
+    if (xhttp.readyState === 4 && xhttp.status === 200) {
+      try {
+        const response = JSON.parse(xhttp.responseText);
+        console.log(response.data);
+        if (!response.success) {
+          alert(response.data);
+          return;
+        }
+        sessionStorage.setItem("username", response.data.usuario);
+        sessionStorage.setItem("idJogador", response.data.id_jogador);
+        window.location.href = "../pages/selection.html";
+      } catch (e) {
+        console.error("Erro ao analisar o JSON: ", e);
+      }
+    }
+  };
+  xhttp.send(info_login);
 }
