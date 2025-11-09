@@ -178,7 +178,10 @@ function saveLogin() {
   info_cadastro.append("name", document.getElementById("name").value);
   info_cadastro.append("username", document.getElementById("username").value);
   info_cadastro.append("email", document.getElementById("email").value);
-  info_cadastro.append("birth",formataData(document.getElementById("birth").value));
+  info_cadastro.append(
+    "birth",
+    formataData(document.getElementById("birth").value)
+  );
   info_cadastro.append("telephone", document.getElementById("telephone").value);
   info_cadastro.append("cpf", document.getElementById("cpf").value);
   info_cadastro.append("pssd", document.getElementById("pssd").value);
@@ -199,7 +202,13 @@ function saveLogin() {
           alert("Erro na resposta do servidor: " + response.data);
           return;
         }
-        window.location.href = '../pages/selection.html';
+
+        const username = document.getElementById("username").value;
+        sessionStorage.setItem("username", username);
+
+        setTimeout(() => {
+          window.location.href = "selection.html";
+        }, 100);
       } catch (e) {
         console.error("Erro ao analisar o JSON: ", e);
       }
