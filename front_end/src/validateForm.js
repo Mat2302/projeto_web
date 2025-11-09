@@ -206,8 +206,8 @@ function saveLogin() {
           alert("Erro na resposta do servidor: ", response.error);
           return;
         }
-        alert(response.data)
-        window.location.href = 'selection.html';
+        // alert(response.data)
+        window.location.href = '../pages/selection.html';
       } catch (e) {
         console.error("Erro ao analisar o JSON: ", e);
       }
