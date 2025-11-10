@@ -41,26 +41,48 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function updateProfile(nome, email, telefone) {
+    const successSpan = document.getElementById("spanSuccess");
+
+    successSpan.textContent = "";
+    successSpan.style.backgroundColor = "transparent";
+
     const xhttp = new XMLHttpRequest();
     xhttp.open("POST", "../../back_end/profile/update-jogador.php", true);
     xhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
-    const payload = JSON.stringify({ nome, email, telefone });
+    xhttp.send(JSON.stringify({ nome, email, telefone }));
 
     xhttp.onreadystatechange = function () {
       if (xhttp.readyState === 4 && xhttp.status === 200) {
         try {
           const res = JSON.parse(xhttp.responseText);
+
           if (res.success) {
-            alert("Perfil atualizado com sucesso!");
+            successSpan.textContent =
+              res.message || "Perfil atualizado com sucesso!";
+            successSpan.style.color = "#38A3A5";
+            successSpan.style.backgroundColor = "#FFF";
           } else {
-            alert("Erro: " + res.error);
+            let message = "";
+            if (res.field && res.error) {
+              message = `${res.field.toUpperCase()}: ${res.error}`;
+            } else if (res.error) {
+              message = res.error;
+            } else {
+              message = "Erro desconhecido.";
+            }
+
+            successSpan.textContent = message;
+            successSpan.style.color = "#d00000";
+            successSpan.style.backgroundColor = "#FFF";
           }
         } catch (e) {
           console.error("Erro ao interpretar resposta:", e);
+          successSpan.textContent = "Resposta inválida do servidor.";
+          successSpan.style.color = "#d00000";
+          successSpan.style.backgroundColor = "#FFF";
         }
       }
     };
-    xhttp.send(payload);
   }
 
   function toggleEdit(input, button) {

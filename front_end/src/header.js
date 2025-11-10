@@ -48,8 +48,7 @@ document.addEventListener("DOMContentLoaded", () => {
           const response = JSON.parse(xhttp.responseText);
           if (!response.loggedIn) {
             sessionStorage.removeItem("username");
-            alert("Sessão expirada! Redirecionando para a página de login.");
-            window.location.href = "../index.html";
+            window.location.href = "not-login.html";
           }
           sessionStorage.setItem("username", response.username);
         } catch (e) {
@@ -117,4 +116,6 @@ document.addEventListener("DOMContentLoaded", () => {
     };
     xhttp.send();
   }
+
+  
 });

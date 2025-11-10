@@ -1,5 +1,37 @@
 "use strict";
 
+document.addEventListener("DOMContentLoaded", () => {
+    checkSession();
+});
+
+  function checkSession() {
+    let xhttp = new XMLHttpRequest();
+
+    if (!xhttp) {
+      alert("Erro ao criar objeto XMLHttpRequest.");
+      return;
+    }
+
+    xhttp.open("GET", "../../back_end/utils/check_login.php", true);
+    xhttp.withCredentials = true;
+    xhttp.onreadystatechange = function () {
+      if (xhttp.readyState === 4 && xhttp.status === 200) {
+        try {
+          const response = JSON.parse(xhttp.responseText);
+          if (!response.loggedIn) {
+            sessionStorage.removeItem("username");
+            alert("Sessão expirada! Redirecionando para a página de login.");
+            window.location.href = "../index.html";
+          }
+          sessionStorage.setItem("username", response.username);
+        } catch (e) {
+          console.error("Erro ao analisar o JSON: ", e);
+        }
+    }
+  }
+  xhttp.send();
+}
+
 /**
  * @file main.js
  * @brief Arquivo principal que inicia o jogo de memória.
