@@ -320,43 +320,44 @@ export class JogoController {
   /**
    * @brief Salva as informações do jogo atual (tamanho do tabuleiro, movimentos, pontuação e tempo).
    *
-   * @details Atualmente, as informações são apenas logadas no console.
-   *          Futuramente, podem ser salvas em sessionStorage e utilizadas para compor o Score.
+   * @details As informações são enviadas para o back-end via requisição fetch.
    *
    */
-  salvarInformacoes(vitoria) {
-    console.log("Salvando informações do jogo...");
-    console.log(`Tamanho do tabuleiro: ${this.tabuleiro.getTotalCelulas()}`);
-    console.log(`Movimentos: ${this.movimentos}`);
-    console.log(`Pontuação: ${this.paresEncontrados}`);
+  async salvarInformacoes(vitoria) {
+  console.log("Salvando informações do jogo no servidor...");
 
-    let tempo = null;
-    if (this.usarTimer && this.timer) {
-      tempo = this.timer.getTempoDecorrido();
-      console.log(`Tempo: ${tempo} segundos`);
-    } else {
-      console.log("Tempo: 0 segundos (modo clássico)");
+  const tempo = (this.usarTimer && this.timer)
+    ? this.timer.getTempoDecorrido()
+    : null;
+
+  const payload = {
+    tamanho_tabuleiro: this.tabuleiro.tamanho,        
+    quantidade_movimentos: this.movimentos,           
+    pontuacao: this.paresEncontrados,                 
+    modo_jogo: !!this.usarTimer,                      
+    tempo_segundos: tempo,                            
+    resultado: !!vitoria                             
+  };
+
+  try {
+    const resp = await fetch('/projeto_web/back_end/score/save_game.php', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      credentials: 'include'
+    , body: JSON.stringify(payload)
+    });
+
+    const data = await resp.json();
+    if (!resp.ok || !data.success) {
+      console.error('Falha ao salvar jogo:', data.message || data);
+      return;
     }
 
-    const ranking = JSON.parse(localStorage.getItem("ranking")) || {
-      "2x2": [],
-      "4x4": [],
-      "6x6": [],
-      "8x8": [],
-    };
-
-    const modo = `${this.tabuleiro.tamanho}x${this.tabuleiro.tamanho}`;
-    const nome = sessionStorage.getItem("username") || "Anônimo";
-    ranking[modo].push({
-      jogador: nome,
-      movimentos: this.movimentos,
-      pontuacao: this.paresEncontrados,
-      tempo: tempo || 0,
-      data: new Date().toLocaleString(),
-      resultado: vitoria,
-    });
-    localStorage.setItem("ranking", JSON.stringify(ranking));
+    console.log('Jogo salvo! id_jogo:', data.id_jogo);
+  } catch (err) {
+    console.error('Erro de rede ao salvar jogo:', err);
   }
+}
 
   /**
    * @brief Reinicia o jogo, resetando o tabuleiro, os contadores e o timer (se aplicável).
