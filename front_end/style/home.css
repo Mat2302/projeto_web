@@ -83,3 +83,10 @@
     opacity: 0.6;
     z-index: 0;
 }
+
+.autenticacaoBtn {
+    margin-top: 4vh;
+    display: flex;
+    flex-direction: row;
+    width: 50%;
+}

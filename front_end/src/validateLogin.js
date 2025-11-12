@@ -42,7 +42,7 @@ function validateInput(input, span, message) {
     case "username":
       regex = /^[A-Za-z0-9._]{3,20}$/;
       if (!regex.test(values)) {
-        message = "O username deve ter entre 3 e 20 caracteres, sem espaços!";
+        message = "O usuário deve ser preenchido!";
         validate = false;
       }
       break;

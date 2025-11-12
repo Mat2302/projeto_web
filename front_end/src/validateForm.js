@@ -24,13 +24,13 @@ document.addEventListener("DOMContentLoaded", () => {
     email: {
       input: document.getElementById("email"),
       span: document.getElementById("alertEmail"),
-      message: "O email deve ser válido!",
+      message: "O email deve ser preenchido!",
     },
 
     birth: {
       input: document.getElementById("birth"),
       span: document.getElementById("alertBirth"),
-      message: "A data de nascimento deve ser válida!",
+      message: "A data de nascimento deve ser preenchida!",
     },
 
     tel: {
@@ -83,7 +83,7 @@ function validateInput(input, span, message) {
     case "name":
       regex = /^(?=.*[\s])[A-Za-zÀ-ü\s]{3,}$/;
       if (!regex.test(values)) {
-        message = "O nome deve conter apenas letras e pelo menos 3 caracteres!";
+        message = "O nome deve conter apenas letras, pelo menos 3 caracteres e um espaço!";
         validate = false;
       }
       break;
@@ -129,7 +129,7 @@ function validateInput(input, span, message) {
       regex = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[!@#$%&*])[A-Za-z\d!@#$%&*]{8,}$/;
       if (!regex.test(values)) {
         message =
-          "A senha deve conter ao menos 8 caracteres, com letras e números!";
+          "A senha deve conter ao menos 8 caracteres, com letras, números e caracteres especiais!";
         validate = false;
       }
       break;
@@ -178,7 +178,10 @@ function saveLogin() {
   info_cadastro.append("name", document.getElementById("name").value);
   info_cadastro.append("username", document.getElementById("username").value);
   info_cadastro.append("email", document.getElementById("email").value);
-  info_cadastro.append("birth",formataData(document.getElementById("birth").value));
+  info_cadastro.append(
+    "birth",
+    formataData(document.getElementById("birth").value)
+  );
   info_cadastro.append("telephone", document.getElementById("telephone").value);
   info_cadastro.append("cpf", document.getElementById("cpf").value);
   info_cadastro.append("pssd", document.getElementById("pssd").value);
@@ -199,7 +202,13 @@ function saveLogin() {
           alert("Erro na resposta do servidor: " + response.data);
           return;
         }
-        window.location.href = '../pages/selection.html';
+
+        const username = document.getElementById("username").value;
+        sessionStorage.setItem("username", username);
+
+        setTimeout(() => {
+          window.location.href = "selection.html";
+        }, 100);
       } catch (e) {
         console.error("Erro ao analisar o JSON: ", e);
       }
