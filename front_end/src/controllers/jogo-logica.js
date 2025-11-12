@@ -340,7 +340,7 @@ export class JogoController {
   };
 
   try {
-    const resp = await fetch('/projeto_web/back_end/score/save_game.php', {
+    const resp = await fetch('/projects/projeto_web/back_end/score/save_game.php', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       credentials: 'include'

@@ -56,7 +56,7 @@ function validateInput(input, span, message) {
     span.innerHTML = "";
     input.style.borderColor = "#b5e48c";
     return true;
-  } 
+  }
 }
 
 function saveLogin() {
@@ -83,7 +83,9 @@ function saveLogin() {
         }
         sessionStorage.setItem("username", response.data.usuario);
         sessionStorage.setItem("idJogador", response.data.id_jogador);
-        window.location.href = "../pages/selection.html";
+        setTimeout(() => {
+          window.location.href = "selection.html";
+        }, 100);
       } catch (e) {
         console.error("Erro ao analisar o JSON: ", e);
       }
