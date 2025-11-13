@@ -76,7 +76,7 @@ document.addEventListener("DOMContentLoaded", () => {
           const response = JSON.parse(xhttp.responseText);
           if (response.success) {
             console.log('Logout bem-sucedido.');
-            sessionStorage.removeItem("username");
+            sessionStorage.clear();
             window.location.href = "../index.html";
           } else {
             console.log("Erro ao fazer logout.");
