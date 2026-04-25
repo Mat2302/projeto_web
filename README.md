@@ -84,7 +84,7 @@ $db_password = "";
 | Nome | RA |
 |---|---|
 | Laura Rodrigues Russo
-| Matheus
+| Matheus Figueiredo
 | Sean Torres dos Santos | 268122 |
 
 ---
